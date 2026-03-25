@@ -1,0 +1,15 @@
+{
+  "name": "raudhatul-jannah-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-ready static site and lightweight Node admin API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "check": "node --check server.js && node --check src/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

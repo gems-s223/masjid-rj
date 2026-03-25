@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masjid Raudhatul Jannah - Karanganyar, Kebumen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══ NAVBAR ══════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <a href="#beranda" class="nav-logo">
+    <img src="assets/brand/logo.jpg" alt="Logo Raudhatul Jannah">
+    <div>
+      <span class="nav-logo-name">Raudhatul Jannah</span>
+      <span class="nav-logo-city">Karanganyar - Kebumen</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#tentang">Tentang</a></li>
+    <li><a href="#program">Program</a></li>
+    <li><a href="#jadwal">Jadwal</a></li>
+    <li><a href="#streaming">Streaming</a></li>
+    <li><a href="#videos">Video</a></li>
+    <li><a href="#galeri">Galeri</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+    <li><a href="login.html">Admin</a></li>
+    <li><a href="#donasi" class="nav-cta">Donasi</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══ MOBILE NAV ══════════════════════════════════════ -->
+<div class="mobile-nav" id="mobileNav">
+  <span class="mobile-close" onclick="toggleNav()">&#x2715;</span>
+  <a href="#tentang"   onclick="toggleNav()">Tentang</a>
+  <a href="#program"   onclick="toggleNav()">Program</a>
+  <a href="#jadwal"    onclick="toggleNav()">Jadwal</a>
+  <a href="#streaming" onclick="toggleNav()">Streaming</a>
+  <a href="#galeri"    onclick="toggleNav()">Galeri</a>
+  <a href="#kontak"    onclick="toggleNav()">Kontak</a>
+  <a href="login.html">Admin</a>
+  <a href="#donasi"    onclick="toggleNav()">Donasi</a>
+</div>
+
+<!-- ═══ HERO ════════════════════════════════════════════ -->
+<section class="hero" id="beranda">
+  <div class="geo-tile"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-bismillah" dir="rtl" lang="ar">&#1576;&#1616;&#1587;&#1618;&#1605;&#1616; &#1575;&#1604;&#1604;&#1614;&#1607;&#1616; &#1575;&#1604;&#1585;&#1614;&#1617;&#1581;&#1618;&#1605;&#1614;&#1606;&#1616; &#1575;&#1604;&#1585;&#1614;&#1617;&#1581;&#1616;&#1610;&#1605;&#1616;</div>
+    <img src="assets/brand/logo.jpg" alt="Masjid Raudhatul Jannah" class="hero-logo">
+    <div class="hero-bar"></div>
+    <h1 class="hero-title" data-content-key="heroTitle">Masjid<br><em>Raudhatul</em> Jannah</h1>
+    <p class="hero-sub" data-content-key="heroSub">Taman Surga di Bumi Karanganyar</p>
+    <p class="hero-tagline" data-content-key="heroTagline">
+      Rumah Ibadah <span>�</span> Pusat Ilmu <span>�</span> Cahaya Umat
+    </p>
+    <div class="hero-btns">
+      <a href="#streaming" class="btn-ghost">Streaming</a>
+      <a href="#jadwal" class="btn-gold">Kajian Rutin</a>
+      <a href="#donasi" class="btn-ghost">Donasi Sekarang</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ════════════════════════════════════════════ -->
+<section id="tentang">
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <img src="assets/brand/logo.jpg" alt="Logo RJ" class="about-logo">
+      <p class="section-label">Tentang Kami</p>
+      <h2 class="section-title" data-content-key="aboutTitle">Lebih dari<br>Sekadar Masjid</h2>
+      <div class="section-line"></div>
+      <div class="about-stats" style="margin-top:2.5rem">
+        <div class="stat"><span class="stat-n">10+</span><span class="stat-l">Tahun Berdiri</span></div>
+        <div class="stat"><span class="stat-n">50+</span><span class="stat-l">Program/Tahun</span></div>
+        <div class="stat"><span class="stat-n">5K+</span><span class="stat-l">Jama'ah</span></div>
+      </div>
+    </div>
+    <div class="about-right reveal" style="transition-delay:.15s">
+      <p data-content-key="aboutP1">Masjid Raudhatul Jannah adalah pusat kegiatan Islam yang berlokasi di Komplek Minimarket RJ Mart, Karanganyar, Kebumen. Nama <em>Raudhatul Jannah</em> - yang berarti "Taman Surga" - mencerminkan visi kami untuk menjadikan masjid ini sebagai tempat yang penuh keberkahan, ilmu, dan ketenangan bagi seluruh umat.</p>
+      <p data-content-key="aboutP2">Kami berkomitmen untuk menghadirkan kajian ilmu yang bersumber dari Al-Qur'an dan As-Sunnah sesuai pemahaman Salafus Shalih, serta melayani kebutuhan ibadah dan pendidikan masyarakat sekitar.</p>
+      <p data-content-key="aboutP3">Dengan program kajian rutin, live streaming, dan kegiatan untuk seluruh kalangan - anak, remaja, hingga dewasa - Raudhatul Jannah hadir sebagai rumah bagi setiap muslim yang ingin menuntut ilmu dan mendekatkan diri kepada Allah.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROGRAMS ══════════════════════════════════════════ -->
+<section id="program">
+  <div class="geo-tile"></div>
+  <div class="programs-inner">
+    <div class="programs-header reveal">
+      <p class="section-label">Program Kami</p>
+      <h2 class="section-title">Kegiatan &amp; Program Unggulan</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="programs-grid">
+
+      <div class="prog-card reveal">
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="24" r="20"/>
+          <path d="M24 14v10l6 4"/>
+          <path d="M16 10 Q24 6 32 10"/>
+        </svg>
+        <h3 class="prog-title">Kajian Ahad Pagi</h3>
+        <p class="prog-desc">Kajian rutin setiap Ahad pagi mengkaji kitab-kitab para ulama dengan metode talaqqi yang sistematis dan mudah dipahami seluruh kalangan.</p>
+        <span class="prog-tag">Ahad � 10:00 WIB</span>
+      </div>
+
+      <div class="prog-card reveal" style="transition-delay:.1s">
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="8" width="40" height="28" rx="3"/>
+          <circle cx="24" cy="22" r="6"/>
+          <circle cx="24" cy="22" r="2" fill="currentColor" stroke="none"/>
+          <path d="M12 36v6 M36 36v6"/>
+        </svg>
+        <h3 class="prog-title">Live Streaming</h3>
+        <p class="prog-desc">Saksikan kajian ilmu dari mana saja melalui siaran langsung di YouTube dan Facebook. Ilmu tanpa batas, tidak terikat tempat maupun waktu.</p>
+        <span class="prog-tag">YouTube � Facebook</span>
+      </div>
+
+      <div class="prog-card reveal" style="transition-delay:.2s">
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="16" r="7"/>
+          <circle cx="30" cy="16" r="7"/>
+          <path d="M4 40c0-7 6-12 14-12"/>
+          <path d="M44 40c0-7-6-12-14-12"/>
+          <path d="M18 28 Q24 34 30 28"/>
+        </svg>
+        <h3 class="prog-title">Kegiatan Anak</h3>
+        <p class="prog-desc">Program khusus anak-anak: tahsin Al-Qur'an, hafalan surat pendek, dan pendidikan akhlak Islami yang menyenangkan dan penuh semangat.</p>
+        <span class="prog-tag">Weekend Program</span>
+      </div>
+
+      <div class="prog-card reveal" style="transition-delay:.05s">
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 18L6 40 42 40 42 18 24 6Z"/>
+          <rect x="16" y="26" width="16" height="14" rx="1"/>
+          <path d="M20 20 Q24 16 28 20"/>
+        </svg>
+        <h3 class="prog-title">Kajian Malam</h3>
+        <p class="prog-desc">Kajian tematik malam hari membahas fiqih, tauhid, dan sirah nabawiyah. Ilmu yang menemani malam-malam penuh keberkahan.</p>
+        <span class="prog-tag">Rabu � Ba'da Isya'</span>
+      </div>
+
+      <div class="prog-card reveal" style="transition-delay:.15s">
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 38V16 Q24 8 38 16 L38 38"/>
+          <path d="M18 38V28H30V38"/>
+          <path d="M22 28V22 Q24 19 26 22 V28"/>
+          <line x1="6" y1="38" x2="42" y2="38"/>
+        </svg>
+        <h3 class="prog-title">Sholat Berjamaah</h3>
+        <p class="prog-desc">Fasilitas lengkap untuk sholat berjamaah lima waktu. Mari ramaikan shaf masjid dan rasakan keindahan ukhuwah Islamiyah.</p>
+        <span class="prog-tag">5 Waktu Sholat</span>
+      </div>
+
+      <div class="prog-card reveal" style="transition-delay:.25s">
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 6 C16 6 8 12 8 22 C8 32 16 42 24 42 C32 42 40 32 40 22 C40 12 32 6 24 6Z"/>
+          <path d="M16 22 Q20 18 24 22 Q28 26 32 22"/>
+          <circle cx="24" cy="22" r="3"/>
+        </svg>
+        <h3 class="prog-title">Zakat &amp; Infaq</h3>
+        <p class="prog-desc">Layanan zakat, infaq, dan sedekah yang amanah untuk membantu saudara muslim yang membutuhkan di sekitar Karanganyar, Kebumen.</p>
+        <span class="prog-tag">LAZIS Raudhatul Jannah</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SCHEDULE ══════════════════════════════════════════ -->
+<section id="jadwal">
+  <div class="schedule-inner">
+    <div class="schedule-header reveal">
+      <p class="section-label">Agenda</p>
+      <h2 class="section-title">Jadwal Kajian Mendatang</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="schedule-grid">
+
+      <div class="sched-card reveal">
+        <div class="sched-date">
+          <span class="sched-day">23</span>
+          <span class="sched-month">Mar</span>
+        </div>
+        <div class="sched-div"></div>
+        <div>
+          <h3 class="sched-title">Kajian Ahad Pagi</h3>
+          <p class="sched-detail">Kitab Al-Mulakhos Fiqh<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah</p>
+          <span class="sched-time">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            10:00 WIB - Menjelang Dzuhur
+          </span>
+        </div>
+      </div>
+
+      <div class="sched-card reveal" style="transition-delay:.1s">
+        <div class="sched-date">
+          <span class="sched-day">26</span>
+          <span class="sched-month">Mar</span>
+        </div>
+        <div class="sched-div"></div>
+        <div>
+          <h3 class="sched-title">Kajian Malam Rabu</h3>
+          <p class="sched-detail">Kitab Shahih Fiqih Sunnah<br>Bersama: Ust. Abdullah Hakim hafizhahullah</p>
+          <span class="sched-time">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Ba'da Isya' - 21:00 WIB
+          </span>
+        </div>
+      </div>
+
+      <div class="sched-card reveal" style="transition-delay:.05s">
+        <div class="sched-date">
+          <span class="sched-day">30</span>
+          <span class="sched-month">Mar</span>
+        </div>
+        <div class="sched-div"></div>
+        <div>
+          <h3 class="sched-title">Kajian Ahad Pagi</h3>
+          <p class="sched-detail">Kitab Al-Mulakhos Fiqh - Lanjutan<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah</p>
+          <span class="sched-time">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            10:00 WIB - Menjelang Dzuhur
+          </span>
+        </div>
+      </div>
+
+      <div class="sched-card reveal" style="transition-delay:.15s">
+        <div class="sched-date">
+          <span class="sched-day">05</span>
+          <span class="sched-month">Apr</span>
+        </div>
+        <div class="sched-div"></div>
+        <div>
+          <h3 class="sched-title">Tahsin Al-Qur'an</h3>
+          <p class="sched-detail">Pembelajaran Tajwid &amp; Makhraj Huruf<br>Terbuka untuk umum, ikhwan &amp; akhwat</p>
+          <span class="sched-time">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Ba'da Ashar - 16:30 WIB
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STREAMING ══════════════════════════════════════════ -->
+<section id="streaming">
+  <div class="streaming-inner">
+    <div class="streaming-left reveal">
+      <p class="section-label">Live Streaming</p>
+      <h2 class="section-title">Saksikan Kajian<br>Dari Mana Saja</h2>
+      <div class="section-line"></div>
+      <p data-content-key="streamingDesc">Kajian-kajian di Masjid Raudhatul Jannah dapat Anda saksikan secara langsung maupun replay melalui channel YouTube dan Facebook kami. Ilmu Islam tidak mengenal jarak maupun waktu.</p>
+      <div class="stream-badges">
+        <span class="badge badge-live" id="liveBadge">LIVE</span>
+        <a class="badge badge-platform" href="https://www.youtube.com/@masjid.rjannah" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+        <a class="badge badge-platform" href="https://www.facebook.com/masjid.mrj" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Facebook
+        </a>
+        <a class="badge badge-platform" href="https://www.instagram.com/masjid.rjannah/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+    <div class="stream-embed reveal" style="transition-delay:.2s">
+      <div class="yt-placeholder" onclick="window.open('https://www.youtube.com/@masjid.rjannah/streams','_blank')">
+        <div class="yt-btn">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </div>
+        <p class="yt-lbl">Raudhatul Jannah Official</p>
+        <p class="yt-sub">Klik untuk menonton di YouTube</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VIDEOS ════════════════════════════════════════════ -->
+<section id="videos">
+  <div class="videos-inner">
+    <div class="videos-header reveal">
+      <div>
+        <p class="section-label">Video Terbaru</p>
+        <h2 class="section-title" data-content-key="videosHeading">Rekaman Kajian & Kegiatan Masjid</h2>
+        <div class="section-line"></div>
+      </div>
+      <a class="videos-link" href="https://www.youtube.com/@RaudhatulJannahOfficial" target="_blank" rel="noopener" data-content-key="videosChannelUrl" data-content-attr="href">
+        Lihat Semua Video
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="videos-grid reveal" style="transition-delay:.15s">
+
+      <a class="vid-card" href="https://www.youtube.com/watch?v=Q_9Nt_tNuaY" target="_blank" rel="noopener" data-content-key="video1Url" data-content-attr="href">
+        <div class="vid-thumb">
+          <img src="https://img.youtube.com/vi/Q_9Nt_tNuaY/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/Q_9Nt_tNuaY/hqdefault.jpg'"
+               alt="Video kajian" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s" data-content-key="video1Image" data-content-attr="src">
+          <div class="vid-play">
+            <div class="vid-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="vid-info">
+          <p class="vid-title" data-content-key="video1Title">Video Kajian Terbaru</p>
+          <p class="vid-date" data-content-key="video1Meta">Raudhatul Jannah Official</p>
+        </div>
+      </a>
+
+      <a class="vid-card" href="https://www.youtube.com/watch?v=QURlHtbi5PY" target="_blank" rel="noopener" data-content-key="video2Url" data-content-attr="href">
+        <div class="vid-thumb">
+          <img src="https://img.youtube.com/vi/QURlHtbi5PY/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/QURlHtbi5PY/hqdefault.jpg'"
+               alt="Video kajian" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s" data-content-key="video2Image" data-content-attr="src">
+          <div class="vid-play">
+            <div class="vid-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="vid-info">
+          <p class="vid-title" data-content-key="video2Title">Video Kajian Terbaru</p>
+          <p class="vid-date" data-content-key="video2Meta">Raudhatul Jannah Official</p>
+        </div>
+      </a>
+
+      <a class="vid-card" href="https://www.youtube.com/watch?v=NPfj_f4r2Ck" target="_blank" rel="noopener" data-content-key="video3Url" data-content-attr="href">
+        <div class="vid-thumb">
+          <img src="https://img.youtube.com/vi/NPfj_f4r2Ck/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/NPfj_f4r2Ck/hqdefault.jpg'"
+               alt="Video kajian" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s" data-content-key="video3Image" data-content-attr="src">
+          <div class="vid-play">
+            <div class="vid-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="vid-info">
+          <p class="vid-title" data-content-key="video3Title">Video Kajian Terbaru</p>
+          <p class="vid-date" data-content-key="video3Meta">Raudhatul Jannah Official</p>
+        </div>
+      </a>
+
+      <a class="vid-card" href="https://www.youtube.com/watch?v=44X5RHUQppI" target="_blank" rel="noopener" data-content-key="video4Url" data-content-attr="href">
+        <div class="vid-thumb">
+          <img src="https://img.youtube.com/vi/44X5RHUQppI/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/44X5RHUQppI/hqdefault.jpg'"
+               alt="Video kajian" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s" data-content-key="video4Image" data-content-attr="src">
+          <div class="vid-play">
+            <div class="vid-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="vid-info">
+          <p class="vid-title" data-content-key="video4Title">Video Kajian Terbaru</p>
+          <p class="vid-date" data-content-key="video4Meta">Raudhatul Jannah Official</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ════════════════════════════════════════════ -->
+<section id="galeri">
+  <div class="gallery-inner">
+    <div class="gallery-header reveal">
+      <p class="section-label">Galeri</p>
+      <h2 class="section-title" style="color:var(--brown-primary)" data-content-key="galleryHeading">Momen &amp; Kegiatan Masjid</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="gallery-grid reveal" style="transition-delay:.2s">
+      <div class="gl-item">
+        <div class="gl-bg gb1"></div>
+        <img class="gl-photo" alt="Galeri 1" data-content-key="galleryImage1" data-content-attr="src">
+        <div class="gl-icon"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2zm0 12c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/></svg></div>
+        <div class="gl-overlay"><p class="gl-cap" data-content-key="galleryCap1">Sholat Berjamaah</p></div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-bg gb2"></div>
+        <img class="gl-photo" alt="Galeri 2" data-content-key="galleryImage2" data-content-attr="src">
+        <div class="gl-icon"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2zm0 12c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/></svg></div>
+        <div class="gl-overlay"><p class="gl-cap" data-content-key="galleryCap2">Kajian Rutin Ahad Pagi</p></div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-bg gb3"></div>
+        <img class="gl-photo" alt="Galeri 3" data-content-key="galleryImage3" data-content-attr="src">
+        <div class="gl-icon"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2zm0 12c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/></svg></div>
+        <div class="gl-overlay"><p class="gl-cap" data-content-key="galleryCap3">Kegiatan Anak</p></div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-bg gb4"></div>
+        <img class="gl-photo" alt="Galeri 4" data-content-key="galleryImage4" data-content-attr="src">
+        <div class="gl-icon"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2zm0 12c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/></svg></div>
+        <div class="gl-overlay"><p class="gl-cap" data-content-key="galleryCap4">Halaqah Ilmiah</p></div>
+      </div>
+      <div class="gl-item">
+        <div class="gl-bg gb5"></div>
+        <img class="gl-photo" alt="Galeri 5" data-content-key="galleryImage5" data-content-attr="src">
+        <div class="gl-icon"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2zm0 12c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/></svg></div>
+        <div class="gl-overlay"><p class="gl-cap" data-content-key="galleryCap5">Live Streaming</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ════════════════════════════════════════════ -->
+<section id="kontak">
+  <div class="geo-tile"></div>
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <p class="section-label" data-content-key="contactSectionLabel">Hubungi Kami</p>
+      <h2 class="section-title" data-content-key="contactSectionTitle">Temukan Kami<br>di Sini</h2>
+      <div class="section-line"></div>
+      <div class="contact-items">
+
+        <div class="ci">
+          <a class="ci-icon" href="https://maps.google.com/?q=Masjid+Raudhatul+Jannah+Karanganyar+Kebumen" target="_blank" title="Buka di Google Maps" data-content-key="contactMapsUrl" data-content-attr="href">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </a>
+          <div>
+            <p class="ci-lbl" data-content-key="contactLocationLabel">Lokasi</p>
+            <p class="ci-val" data-content-key="contactAddress">Komplek Minimarket RJ Mart<br>JL. Pabrik No. 1, Karanganyar, Kebumen</p>
+          </div>
+        </div>
+
+        <div class="ci">
+          <a class="ci-icon" href="https://wa.me/6285865206010" target="_blank" title="Chat WhatsApp" data-content-key="contactWhatsappUrl" data-content-attr="href">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+          <div>
+            <p class="ci-lbl" data-content-key="contactWhatsappLabel">Telepon / WhatsApp</p>
+            <p class="ci-val"><a href="tel:085865206010" data-content-key="contactPhoneHref" data-content-attr="href"><span data-content-key="contactPhoneText">0858-6520-6010</span></a></p>
+          </div>
+        </div>
+
+        <div class="ci">
+          <a class="ci-icon" href="https://www.instagram.com/masjid.rjannah/" target="_blank" rel="noopener" title="Instagram" data-content-key="contactInstagramUrl" data-content-attr="href">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <div>
+            <p class="ci-lbl" data-content-key="contactInstagramLabel">Instagram</p>
+            <p class="ci-val"><a href="https://www.instagram.com/masjid.rjannah/" target="_blank" data-content-key="contactInstagramUrl" data-content-attr="href"><span data-content-key="contactInstagramText">@masjid.rjannah</span></a></p>
+          </div>
+        </div>
+
+        <div class="ci">
+          <a class="ci-icon" href="https://www.facebook.com/masjid.mrj" target="_blank" rel="noopener" title="Facebook" data-content-key="contactFacebookUrl" data-content-attr="href">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <div>
+            <p class="ci-lbl" data-content-key="contactFacebookLabel">Facebook</p>
+            <p class="ci-val"><a href="https://www.facebook.com/masjid.mrj" target="_blank" data-content-key="contactFacebookUrl" data-content-attr="href"><span data-content-key="contactFacebookText">Masjid Raudhatul Jannah</span></a></p>
+          </div>
+        </div>
+
+        <div class="ci">
+          <a class="ci-icon" href="https://www.youtube.com/@masjid.rjannah" target="_blank" rel="noopener" title="YouTube" data-content-key="contactYoutubeUrl" data-content-attr="href">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <div>
+            <p class="ci-lbl" data-content-key="contactYoutubeLabel">YouTube</p>
+            <p class="ci-val"><a href="https://www.youtube.com/@masjid.rjannah" target="_blank" data-content-key="contactYoutubeUrl" data-content-attr="href"><span data-content-key="contactYoutubeText">Raudhatul Jannah Official</span></a></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="reveal" style="transition-delay:.2s">
+      <div class="map-wrap">
+        <iframe
+          src="https://maps.google.com/maps?q=Masjid+Raudhatul+Jannah+Karanganyar+Kebumen&output=embed"
+          data-content-key="contactMapEmbedUrl" data-content-attr="src"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DONASI BANNER ══════════════════════════════════════ -->
+<section id="donasi">
+  <div class="donasi-inner reveal">
+    <p class="section-label" style="color:var(--brown-mid)" data-content-key="donasiLabel">Donasi &amp; Infaq</p>
+    <h2 class="section-title" data-content-key="donasiTitle">Dukung Kemakmuran<br>Masjid Raudhatul Jannah</h2>
+    <p data-content-key="donasiDesc">Sedekah Anda adalah investasi akhirat yang tak ternilai. Bantu kami terus menjalankan program dakwah, pendidikan, dan pelayanan umat di Karanganyar, Kebumen.</p>
+    <div class="rekening">
+      <p class="rek-lbl" data-content-key="bankLabel">Nomor Rekening</p>
+      <p class="rek-bank" data-content-key="bankName">Nama Bank</p>
+      <p class="rek-no" data-content-key="bankNumber">No. Rek: XXXX-XXXX-XXXX</p>
+      <p class="rek-atas" data-content-key="bankOwner">a.n. Masjid Raudhatul Jannah</p>
+    </div>
+    <br>
+    <a href="https://wa.me/6285865206010" target="_blank" class="btn-gold" style="background:var(--brown-dark);color:var(--cream)" data-content-key="donasiWhatsappUrl" data-content-attr="href"><span data-content-key="donasiWhatsappText">Konfirmasi via WhatsApp</span></a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════ -->
+<footer>
+  <div class="geo-tile"></div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/brand/logo.jpg" alt="Raudhatul Jannah">
+          <div class="footer-logo-name">
+            <span data-content-key="footerBrandName">Masjid Raudhatul Jannah</span>
+            <small data-content-key="footerBrandLocation">Karanganyar - Kebumen</small>
+          </div>
+        </div>
+        <p class="footer-ayat" data-content-key="footerAyat">"Dan sesungguhnya masjid-masjid itu adalah untuk Allah, maka janganlah kamu menyembah seseorang pun di dalamnya beserta Allah." <br>- QS. Al-Jin: 18</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#program">Program</a></li>
+            <li><a href="#jadwal">Jadwal Kajian</a></li>
+            <li><a href="#streaming">Live Streaming</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Program</h4>
+          <ul>
+            <li><a href="#">Kajian Ahad Pagi</a></li>
+            <li><a href="#">Kajian Malam</a></li>
+            <li><a href="#">Tahsin Al-Qur'an</a></li>
+            <li><a href="#">Kegiatan Anak</a></li>
+            <li><a href="#">Zakat &amp; Infaq</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <ul>
+            <li><a href="tel:085865206010" data-content-key="contactPhoneHref" data-content-attr="href"><svg class="footer-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.06 6.06l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span data-content-key="contactPhoneText">0858-6520-6010</span></a></li>
+            <li><a href="https://www.instagram.com/masjid.rjannah/" target="_blank" data-content-key="contactInstagramUrl" data-content-attr="href"><svg class="footer-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><span data-content-key="contactInstagramText">@masjid.rjannah</span></a></li>
+            <li><a href="https://www.facebook.com/masjid.mrj" target="_blank" data-content-key="contactFacebookUrl" data-content-attr="href"><svg class="footer-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><span data-content-key="contactFacebookText">Masjid Raudhatul Jannah</span></a></li>
+            <li><a href="https://www.youtube.com/@masjid.rjannah/" target="_blank" data-content-key="contactYoutubeUrl" data-content-attr="href"><svg class="footer-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><span data-content-key="contactYoutubeText">Raudhatul Jannah Official</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy" data-content-key="footerCopy">(c) 2024 Masjid Raudhatul Jannah - Karanganyar, Kebumen. Hak cipta dilindungi.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+

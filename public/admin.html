@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Konten - Masjid Raudhatul Jannah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <main class="admin-wrap">
+    <header class="admin-header">
+      <p class="kicker">Panel Pengaturan</p>
+      <h1>Admin Konten Website</h1>
+      <p class="lead">Perubahan disimpan ke server lokal proyek ini sehingga dipakai bersama oleh seluruh pengguna yang membuka website dari server yang sama.</p>
+    </header>
+
+    <form id="adminForm" class="stacked-form">
+      <section class="panel panel-section">
+        <div class="panel-head">
+          <h2>Hero Section</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            Judul Hero (boleh HTML)
+            <textarea name="heroTitle" rows="3"></textarea>
+          </label>
+          <label>
+            Subjudul Hero
+            <textarea name="heroSub" rows="2"></textarea>
+          </label>
+          <label>
+            Tagline Hero (boleh HTML)
+            <textarea name="heroTagline" rows="2"></textarea>
+          </label>
+          <label class="live-toggle">
+            <input id="isLive" type="checkbox">
+            Tandai sedang LIVE
+          </label>
+        </div>
+      </section>
+
+      <section class="panel panel-section">
+        <div class="panel-head">
+          <h2>About Section</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            Judul Tentang (boleh HTML)
+            <textarea name="aboutTitle" rows="2"></textarea>
+          </label>
+          <label>
+            Tentang Paragraf 1 (boleh HTML)
+            <textarea name="aboutP1" rows="4"></textarea>
+          </label>
+          <label>
+            Tentang Paragraf 2
+            <textarea name="aboutP2" rows="4"></textarea>
+          </label>
+          <label>
+            Tentang Paragraf 3
+            <textarea name="aboutP3" rows="4"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel panel-section">
+        <div class="panel-head">
+          <h2>Streaming Section</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            Deskripsi Streaming
+            <textarea name="streamingDesc" rows="3"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel panel-section">
+        <div class="panel-head">
+          <h2>Videos Section</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            Judul Section Video
+            <input name="videosHeading" type="text">
+          </label>
+          <label>
+            Link Channel YouTube (Lihat Semua Video)
+            <input name="videosChannelUrl" type="text">
+          </label>
+        </div>
+        <div class="repeater-actions">
+          <button id="addVideoBtn" class="btn ghost" type="button">Tambah Video</button>
+        </div>
+        <div id="videosRepeater" class="repeater-list"></div>
+      </section>
+
+      <section class="panel panel-section">
+        <div class="panel-head">
+          <h2>Gallery Section</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            Judul Galeri
+            <input name="galleryHeading" type="text">
+          </label>
+        </div>
+        <div class="repeater-actions">
+          <button id="addGalleryBtn" class="btn ghost" type="button">Tambah Item Galeri</button>
+        </div>
+        <div id="galleryRepeater" class="repeater-list"></div>
+      </section>
+
+      <section class="panel panel-section">
+        <div class="panel-head">
+          <h2>Contact Section</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            Label Section Kontak
+            <input name="contactSectionLabel" type="text">
+          </label>
+          <label>
+            Judul Section Kontak (boleh HTML)
+            <textarea name="contactSectionTitle" rows="2"></textarea>
+          </label>
+          <label>
+            Label Lokasi
+            <input name="contactLocationLabel" type="text">
+          </label>
+          <label>
+            Alamat Kontak (boleh HTML)
+            <textarea name="contactAddress" rows="3"></textarea>
+          </label>
+          <label>
+            Link Google Maps
+            <input name="contactMapsUrl" type="text">
+          </label>
+          <label>
+            Link Embed Map
+            <input name="contactMapEmbedUrl" type="text">
+          </label>
+          <label>
+            Label WhatsApp
+            <input name="contactWhatsappLabel" type="text">
+          </label>
+          <label>
+            Link WhatsApp
+            <input name="contactWhatsappUrl" type="text">
+          </label>
+          <label>
+            Link Telepon
+            <input name="contactPhoneHref" type="text">
+          </label>
+          <label>
+            Teks Nomor Telepon
+            <input name="contactPhoneText" type="text">
+          </label>
+          <label>
+            Link Instagram
+            <input name="contactInstagramUrl" type="text">
+          </label>
+          <label>
+            Teks Instagram
+            <input name="contactInstagramText" type="text">
+          </label>
+          <label>
+            Link Facebook
+            <input name="contactFacebookUrl" type="text">
+          </label>
+          <label>
+            Teks Facebook
+            <input name="contactFacebookText" type="text">
+          </label>
+          <label>
+            Link YouTube
+            <input name="contactYoutubeUrl" type="text">
+          </label>
+          <label>
+            Teks YouTube
+            <input name="contactYoutubeText" type="text">
+          </label>
+        </div>
+      </section>
+
+      <section class="panel panel-section">
+        <div class="panel-head">
+          <h2>Donation Section</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            Label Donasi
+            <input name="donasiLabel" type="text">
+          </label>
+          <label>
+            Judul Donasi (boleh HTML)
+            <textarea name="donasiTitle" rows="2"></textarea>
+          </label>
+          <label>
+            Deskripsi Donasi
+            <textarea name="donasiDesc" rows="3"></textarea>
+          </label>
+          <label>
+            Nama Bank
+            <input name="bankName" type="text">
+          </label>
+          <label>
+            Label Rekening
+            <input name="bankLabel" type="text">
+          </label>
+          <label>
+            Nomor Rekening
+            <input name="bankNumber" type="text">
+          </label>
+          <label>
+            Atas Nama Rekening
+            <input name="bankOwner" type="text">
+          </label>
+          <label>
+            Link Tombol Konfirmasi WhatsApp
+            <input name="donasiWhatsappUrl" type="text">
+          </label>
+          <label>
+            Teks Tombol Konfirmasi
+            <input name="donasiWhatsappText" type="text">
+          </label>
+        </div>
+      </section>
+
+      <section class="panel panel-section">
+        <div class="panel-head">
+          <h2>Footer Section</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            Nama Brand Footer
+            <input name="footerBrandName" type="text">
+          </label>
+          <label>
+            Lokasi Brand Footer
+            <input name="footerBrandLocation" type="text">
+          </label>
+          <label>
+            Ayat Footer (boleh HTML)
+            <textarea name="footerAyat" rows="4"></textarea>
+          </label>
+          <label>
+            Copyright Footer
+            <input name="footerCopy" type="text">
+          </label>
+        </div>
+      </section>
+    </form>
+
+    <section class="actions">
+      <button id="saveBtn" class="btn primary" type="button">Simpan Perubahan</button>
+      <button id="resetBtn" class="btn ghost" type="button">Reset ke Default</button>
+      <button id="logoutBtn" class="btn ghost" type="button">Keluar</button>
+      <a class="btn link" href="/HELP.md" target="_blank" rel="noopener">Buka Panduan Admin</a>
+      <a class="btn link" href="index.html" target="_blank" rel="noopener">Buka Beranda</a>
+      <p id="statusText" class="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <template id="videoItemTemplate">
+    <article class="repeater-card" data-role="video-item">
+      <div class="repeater-card-head">
+        <h3>Video <span data-role="index"></span></h3>
+        <div class="repeater-card-actions">
+          <button class="btn sm" type="button" data-action="move-video-up" title="Geser ke atas">&#9650;</button>
+          <button class="btn sm" type="button" data-action="move-video-down" title="Geser ke bawah">&#9660;</button>
+          <button class="btn danger" type="button" data-action="remove-video">Hapus</button>
+        </div>
+      </div>
+      <div class="form-grid">
+        <label>
+          Video URL
+          <input type="text" data-field="url">
+        </label>
+        <label>
+          Thumbnail URL
+          <input type="text" data-field="image">
+        </label>
+        <label>
+          Judul Video
+          <input type="text" data-field="title">
+        </label>
+        <label>
+          Meta Video
+          <input type="text" data-field="meta">
+        </label>
+      </div>
+      <img class="preview-thumb" data-role="preview" alt="Preview thumbnail video">
+    </article>
+  </template>
+
+  <template id="galleryItemTemplate">
+    <article class="repeater-card" data-role="gallery-item">
+      <div class="repeater-card-head">
+        <h3>Item Galeri <span data-role="index"></span></h3>
+        <div class="repeater-card-actions">
+          <button class="btn sm" type="button" data-action="move-gallery-up" title="Geser ke atas">&#9650;</button>
+          <button class="btn sm" type="button" data-action="move-gallery-down" title="Geser ke bawah">&#9660;</button>
+          <button class="btn danger" type="button" data-action="remove-gallery">Hapus</button>
+        </div>
+      </div>
+      <div class="form-grid">
+        <label>
+          Caption
+          <input type="text" data-field="caption">
+        </label>
+        <label>
+          Image URL (opsional)
+          <input type="text" data-field="imageUrl">
+        </label>
+      </div>
+      <div class="dropzone" data-role="dropzone" tabindex="0">
+        Drag & drop gambar di sini atau klik untuk upload
+      </div>
+      <input type="file" data-role="file-input" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+      <div class="upload-progress" data-role="upload-progress" hidden>
+        <div class="upload-bar" data-role="upload-bar"></div>
+        <span class="upload-pct" data-role="upload-pct">0%</span>
+      </div>
+      <img class="preview-thumb" data-role="preview" alt="Preview gambar galeri">
+    </article>
+  </template>
+
+  <script src="admin.js"></script>
+</body>
+</html>
+
+

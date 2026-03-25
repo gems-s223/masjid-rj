@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Admin - Masjid Raudhatul Jannah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <section class="auth-gate">
+    <div class="auth-card panel">
+      <p class="kicker">Akses Admin</p>
+      <h1>Masuk ke Panel Admin</h1>
+      <p class="lead">Masukkan password admin untuk membuka halaman pengaturan konten.</p>
+      <form id="loginForm" class="auth-form">
+        <label>
+          Password
+          <input id="passwordInput" name="password" type="password" autocomplete="current-password">
+        </label>
+        <div class="auth-actions">
+          <button id="loginBtn" class="btn primary" type="submit">Masuk</button>
+          <a class="btn link" href="index.html">Kembali ke Beranda</a>
+          <p id="loginStatus" class="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script src="login.js"></script>
+</body>
+</html>
