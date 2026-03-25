@@ -45,34 +45,34 @@
     "footerCopy": "(c) 2026 Masjid Raudhatul Jannah - Karanganyar, Kebumen. Hak cipta dilindungi.",
     "videos": [
       {
-        "url": "https://www.youtube.com/watch?v=Q_9Nt_tNuaY",
         "image": "https://img.youtube.com/vi/Q_9Nt_tNuaY/maxresdefault.jpg",
+        "meta": "Raudhatul Jannah Official",
         "title": "Video Kajian Terbaru",
-        "meta": "Raudhatul Jannah Official"
+        "url": "https://www.youtube.com/watch?v=Q_9Nt_tNuaY"
       },
       {
-        "url": "https://www.youtube.com/watch?v=QURlHtbi5PY",
         "image": "https://img.youtube.com/vi/QURlHtbi5PY/maxresdefault.jpg",
+        "meta": "Raudhatul Jannah Official",
         "title": "Video Kajian Terbaru",
-        "meta": "Raudhatul Jannah Official"
+        "url": "https://www.youtube.com/watch?v=QURlHtbi5PY"
       },
       {
-        "url": "https://www.youtube.com/watch?v=NPfj_f4r2Ck",
         "image": "https://img.youtube.com/vi/NPfj_f4r2Ck/maxresdefault.jpg",
+        "meta": "Raudhatul Jannah Official",
         "title": "Video Kajian Terbaru",
-        "meta": "Raudhatul Jannah Official"
+        "url": "https://www.youtube.com/watch?v=NPfj_f4r2Ck"
       },
       {
-        "url": "https://www.youtube.com/watch?v=44X5RHUQppI",
         "image": "https://img.youtube.com/vi/44X5RHUQppI/maxresdefault.jpg",
+        "meta": "Raudhatul Jannah Official",
         "title": "Pelaksanaan Shalat Ied",
-        "meta": "Raudhatul Jannah Official"
+        "url": "https://www.youtube.com/watch?v=44X5RHUQppI"
       },
       {
-        "url": "https://www.youtube.com/shorts/W2DscB6pvoY",
         "image": "https://img.youtube.com/vi/W2DscB6pvoY/maxresdefault.jpg",
+        "meta": "Raudhatul Jannah Official",
         "title": "Pelaksanaan Shalat Ied",
-        "meta": "Raudhatul Jannah Official"
+        "url": "https://www.youtube.com/shorts/W2DscB6pvoY"
       }
     ],
     "galleryItems": [
