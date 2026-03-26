@@ -335,14 +335,18 @@
     }
 
     /* ─── SCHEDULE ────────────────────────────────────── */
-    #jadwal { background: var(--peach); padding: 8rem 2rem; }
-    .schedule-inner { max-width: 1120px; margin: 0 auto; }
+    #jadwal { 
+      background: var(--cream-light);
+      color: var(--brown-dark);
+      padding: 8rem 2rem;
+    }
+    .schedule-inner { max-width: 1120px; margin: 0 auto; position: relative; }
     .schedule-inner .section-title { color: var(--brown-primary); }
     .schedule-header { margin-bottom: 3.5rem; }
     .schedule-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.4rem; }
 
     .sched-card {
-      background: var(--cream-light); border-radius: 6px;
+      background: var(--peach); border-radius: 6px;
       padding: 1.7rem 1.8rem;
       display: flex; gap: 1.4rem; align-items: flex-start;
       border-left: 3.5px solid var(--brown-primary);
@@ -377,8 +381,11 @@
     .sched-time svg { flex-shrink: 0; }
 
     /* ─── STREAMING ───────────────────────────────────── */
-    #streaming { background: var(--brown-deepest); padding: 8rem 2rem; }
-    .streaming-inner {
+    #streaming { 
+      background: var(--brown-dark); 
+      padding: 8rem 2rem; position: relative; overflow: hidden;}
+    #streaming .geo-tile { opacity: 0.07; }
+      .streaming-inner {
       max-width: 1120px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1.5fr;
       gap: 5rem; align-items: center;
@@ -420,7 +427,7 @@
     .badge-platform svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
 
     /* ─── VIDEO GRID ──────────────────────────────────── */
-    #videos { background: var(--brown-dark); padding: 6rem 2rem; }
+    #videos { background: var(--cream-light); padding: 6rem 2rem; }
     .videos-inner { max-width: 1120px; margin: 0 auto; }
     .videos-inner .section-title { color: var(--cream); }
     .videos-header { margin-bottom: 3rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
@@ -542,7 +549,7 @@
       grid-template-rows: 180px 180px;
     }
 
-    /* -- 4 items: 2�2 -- */
+    /* -- 4 items: 2�2 -- */
     .gallery-grid[data-count="4"] {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 260px 260px;
@@ -613,6 +620,54 @@
     }
     .gl-item:hover .gl-overlay { opacity: 1; }
     .gl-cap { color: var(--cream); font-size: 0.84rem; font-weight: 500; }
+
+    /* ─── PROGRAMS ────────────────────────────────────── */
+    #fasilitas {
+      background: var(--brown-dark);
+      padding: 8rem 2rem; position: relative; overflow: hidden;
+    }
+    #fasilitas .geo-tile { opacity: 0.07; }
+    .facilities-inner { max-width: 1120px; margin: 0 auto; position: relative; }
+    .facilities-header { margin-bottom: 4rem; }
+    .facilities-header .section-title { color: var(--cream); }
+
+    .facilities-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+    }
+    .facilities-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,169,110,0.18);
+      border-radius: 6px; padding: 2.4rem 2rem;
+      position: relative; overflow: hidden;
+      transition: transform 0.4s, background 0.4s, border-color 0.4s;
+    }
+    .facilities-card::after {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2.5px;
+      background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .facilities-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-5px); border-color: rgba(200,169,110,0.35); }
+    .facilities-card:hover::after { transform: scaleX(1); }
+
+    .facilities-icon { width: 48px; height: 48px; color: var(--gold); margin-bottom: 1.4rem; }
+    .facilities-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem; font-weight: 600;
+      color: var(--cream); margin-bottom: 0.65rem;
+    }
+    .facilities-desc {
+      font-size: 0.88rem; color: rgba(250,232,212,0.65);
+      line-height: 1.82; font-weight: 300;
+    }
+    .facilities-tag {
+      display: inline-block; margin-top: 1.4rem;
+      font-size: 0.67rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(200,169,110,0.38);
+      padding: 0.28rem 0.75rem; border-radius: 2px;
+    }
 
     /* ─── CONTACT ─────────────────────────────────────── */
     #kontak { background: var(--brown-primary); padding: 8rem 2rem; position: relative; overflow: hidden; }
