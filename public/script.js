@@ -51,6 +51,13 @@
     { icon: 'toko', title: 'Toko RJ Mart', desc: 'Minimarket RJ Mart berlokasi di kompleks masjid, memudahkan jamaah memenuhi kebutuhan sehari-hari sebelum atau sesudah ibadah.', tag: 'Buka Setiap Hari' }
   ];
 
+  const DEFAULT_SCHEDULE_ITEMS = [
+    { day: '24', month: 'Mar', title: 'Kajian Ahad Pagi', detail: 'Kitab Al-Mulakhos Fiqh<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah', time: '10:00 WIB - Menjelang Dzuhur' },
+    { day: '27', month: 'Mar', title: 'Kajian Malam Kamis', detail: 'Kitab Shahih Fiqih Sunnah<br>Bersama: Ust. Abdullah Hakim hafizhahullah', time: "Ba'da Isya' - 21:00 WIB" },
+    { day: '30', month: 'Mar', title: 'Kajian Ahad Pagi', detail: 'Kitab Al-Mulakhos Fiqh - Lanjutan<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah', time: '10:00 WIB - Menjelang Dzuhur' },
+    { day: '05', month: 'Apr', title: 'Tahsin Al-Quran', detail: 'Pembelajaran Tajwid &amp; Makhraj Huruf<br>Terbuka untuk umum, ikhwan &amp; akhwat', time: "Ba'da Ashar - 16:30 WIB" }
+  ];
+
   const FASILITAS_ICONS = {
     'toilet': '<path d="M16 6 C16 6 12 10 12 16 C12 20 14 22 16 24 L16 42"/><path d="M20 6 L20 18 C20 20 18 22 16 22"/><path d="M24 6 L24 42"/><path d="M28 28 C28 28 36 26 36 34 C36 39 32 42 28 42"/><path d="M28 28 C28 28 36 26 36 20 C36 14 30 12 28 16"/>',
     'parkir': '<rect x="4" y="28" width="40" height="12" rx="3"/><path d="M8 28 L14 14 H34 L40 28"/><circle cx="14" cy="40" r="3"/><circle cx="34" cy="40" r="3"/><path d="M4 34 H44"/><path d="M18 20 H30"/>',
@@ -107,7 +114,7 @@
     if (scheduleSection?.items && Array.isArray(scheduleSection.items) && scheduleSection.items.length > 0) {
       return scheduleSection.items;
     }
-    return [];
+    return DEFAULT_SCHEDULE_ITEMS;
   }
 
   function normalizePrograms(content) {
@@ -216,6 +223,8 @@
         </div>
       </div>`;
     }).join('');
+
+    grid.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
   }
 
   function renderPrograms(content) {
