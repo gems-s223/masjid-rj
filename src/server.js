@@ -206,45 +206,73 @@ function sanitizeString(value) {
 function sanitizeContent(content) {
   const normalized = {};
 
-  Object.entries(content || {}).forEach(([key, value]) => {
-    if (typeof value === 'string') {
-      normalized[key] = value;
+  const scalarSections = ['hero', 'about', 'streaming', 'videos', 'schedule', 'gallery', 'contact', 'donation', 'footer'];
+  scalarSections.forEach(section => {
+    if (content[section] && typeof content[section] === 'object') {
+      normalized[section] = {};
+      Object.entries(content[section]).forEach(([key, value]) => {
+        if (typeof value === 'string') {
+          normalized[section][key] = value;
+        }
+      });
     }
   });
 
-  if (Array.isArray(content.videos)) {
-    normalized.videos = content.videos.map((item) => ({
-      image: sanitizeString(item && item.image),
-      meta: sanitizeString(item && item.meta),
-      title: sanitizeString(item && item.title),
-      url: sanitizeString(item && item.url)
+  if (content.program && content.program.items && Array.isArray(content.program.items)) {
+    normalized.program = {
+      label: sanitizeString(content.program.label),
+      heading: sanitizeString(content.program.heading),
+      items: content.program.items.map((item) => ({
+        icon: sanitizeString(item && item.icon),
+        title: sanitizeString(item && item.title),
+        desc: sanitizeString(item && item.desc),
+        tag: sanitizeString(item && item.tag)
+      }))
+    };
+  }
+
+  if (content.about && content.about.stats && Array.isArray(content.about.stats)) {
+    normalized.about = normalized.about || {};
+    normalized.about.stats = content.about.stats.map((item) => ({
+      number: sanitizeString(item && item.number),
+      label: sanitizeString(item && item.label)
     }));
   }
 
-  if (Array.isArray(content.galleryItems)) {
-    normalized.galleryItems = content.galleryItems.map((item) => ({
-      caption: sanitizeString(item && item.caption),
-      imageUrl: sanitizeString(item && item.imageUrl)
-    }));
+  if (content.videos && content.videos.items && Array.isArray(content.videos.items)) {
+    normalized.videos = {
+      heading: sanitizeString(content.videos.heading),
+      channelUrl: sanitizeString(content.videos.channelUrl),
+      items: content.videos.items.map((item) => ({
+        url: sanitizeString(item && item.url),
+        image: sanitizeString(item && item.image),
+        title: sanitizeString(item && item.title),
+        meta: sanitizeString(item && item.meta)
+      }))
+    };
   }
 
-  if (Array.isArray(content.schedules)) {
-    normalized.schedules = content.schedules.map((item) => ({
-      day: sanitizeString(item && item.day),
-      month: sanitizeString(item && item.month),
-      title: sanitizeString(item && item.title),
-      detail: sanitizeString(item && item.detail),
-      time: sanitizeString(item && item.time)
-    }));
+  if (content.schedule && content.schedule.items && Array.isArray(content.schedule.items)) {
+    normalized.schedule = {
+      heading: sanitizeString(content.schedule.heading),
+      items: content.schedule.items.map((item) => ({
+        day: sanitizeString(item && item.day),
+        month: sanitizeString(item && item.month),
+        title: sanitizeString(item && item.title),
+        detail: sanitizeString(item && item.detail),
+        time: sanitizeString(item && item.time)
+      }))
+    };
   }
 
-  if (Array.isArray(content.programs)) {
-    normalized.programs = content.programs.map((item) => ({
-      icon: sanitizeString(item && item.icon),
-      title: sanitizeString(item && item.title),
-      desc: sanitizeString(item && item.desc),
-      tag: sanitizeString(item && item.tag)
-    }));
+  if (content.gallery && content.gallery.items && Array.isArray(content.gallery.items)) {
+    normalized.gallery = {
+      heading: sanitizeString(content.gallery.heading),
+      items: content.gallery.items.map((item) => ({
+        caption: sanitizeString(item && item.caption),
+        imageUrl: sanitizeString(item && item.imageUrl)
+      }))
+    };
   }
 
   return normalized;

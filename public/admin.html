@@ -25,6 +25,7 @@
       <button class="tab-btn" role="tab" data-tab="streaming">Streaming</button>
       <button class="tab-btn" role="tab" data-tab="videos">Videos</button>
       <button class="tab-btn" role="tab" data-tab="gallery">Gallery</button>
+      <button class="tab-btn" role="tab" data-tab="fasilitas">Fasilitas</button>
       <button class="tab-btn" role="tab" data-tab="contact">Contact</button>
       <button class="tab-btn" role="tab" data-tab="donation">Donation</button>
       <button class="tab-btn" role="tab" data-tab="footer">Footer</button>
@@ -38,16 +39,16 @@
         </div>
         <div class="form-grid">
           <label>
-            Judul Hero (boleh HTML)
-            <textarea name="heroTitle" rows="3"></textarea>
+            Judul Section Hero
+            <textarea name="hero_title" rows="3">Masjid<br><em>Raudhatul</em> Jannah</textarea>
           </label>
           <label>
             Subjudul Hero
-            <textarea name="heroSub" rows="2"></textarea>
+            <textarea name="hero_sub" rows="2">Taman Surga di Bumi Karanganyar</textarea>
           </label>
           <label>
             Tagline Hero (boleh HTML)
-            <textarea name="heroTagline" rows="2"></textarea>
+            <textarea name="hero_tagline" rows="2">Rumah Ibadah <span>·</span> Pusat Ilmu <span>·</span> Cahaya Umat</textarea>
           </label>
           <label class="live-toggle">
             <input id="isLive" type="checkbox">
@@ -62,44 +63,48 @@
         </div>
         <div class="form-grid">
           <label>
-            Judul Tentang (boleh HTML)
-            <textarea name="aboutTitle" rows="2"></textarea>
+            Label Section Tentang
+            <input name="about_label" type="text" value="Tentang Kami">
+          </label>
+          <label>
+            Judul Section Tentang
+            <textarea name="about_heading" rows="2">Lebih dari<br>Sekadar Masjid</textarea>
           </label>
           <label>
             Tentang Paragraf 1 (boleh HTML)
-            <textarea name="aboutP1" rows="4"></textarea>
+            <textarea name="about_p1" rows="4">Masjid Raudhatul Jannah adalah pusat kegiatan Islam yang berlokasi di Komplek Minimarket RJ Mart, Karanganyar, Kebumen. Nama <em>Raudhatul Jannah</em> - yang berarti "Taman Surga" - mencerminkan visi kami untuk menjadikan masjid ini sebagai tempat yang penuh keberkahan, ilmu, dan ketenangan bagi seluruh umat.</textarea>
           </label>
           <label>
             Tentang Paragraf 2
-            <textarea name="aboutP2" rows="4"></textarea>
+            <textarea name="about_p2" rows="4">Kami berkomitmen untuk menghadirkan kajian ilmu yang bersumber dari Al-Quran dan As-Sunnah sesuai pemahaman Salafus Shalih, serta melayani kebutuhan ibadah dan pendidikan masyarakat sekitar.</textarea>
           </label>
           <label>
             Tentang Paragraf 3
-            <textarea name="aboutP3" rows="4"></textarea>
+            <textarea name="about_p3" rows="4">Dengan program kajian rutin, live streaming, dan kegiatan untuk seluruh kalangan - anak, remaja, hingga dewasa - Raudhatul Jannah hadir sebagai rumah bagi setiap muslim yang ingin menuntut ilmu dan mendekatkan diri kepada Allah.</textarea>
           </label>
           <label>
             Statistik 1 — Angka (contoh: 10+)
-            <input name="stat1Number" type="text" value="5+">
+            <input name="about_stat1_number" type="text" value="5+">
           </label>
           <label>
             Statistik 1 — Label (contoh: Tahun Berdiri)
-            <input name="stat1Label" type="text" value="Tahun Berdiri">
+            <input name="about_stat1_label" type="text" value="Tahun Berdiri">
           </label>
           <label>
             Statistik 2 — Angka (contoh: 50+)
-            <input name="stat2Number" type="text" value="20+">
+            <input name="about_stat2_number" type="text" value="20+">
           </label>
           <label>
             Statistik 2 — Label (contoh: Program/Tahun)
-            <input name="stat2Label" type="text" value="Program/Tahun">
+            <input name="about_stat2_label" type="text" value="Program/Tahun">
           </label>
           <label>
             Statistik 3 — Angka (contoh: 5K+)
-            <input name="stat3Number" type="text" value="3K+">
+            <input name="about_stat3_number" type="text" value="2K+">
           </label>
           <label>
             Statistik 3 — Label (contoh: Jama'ah)
-            <input name="stat3Label" type="text" value="Jama'ah">
+            <input name="about_stat3_label" type="text" value="Jama'ah">
           </label>
         </div>
       </section>
@@ -111,11 +116,11 @@
         <div class="form-grid">
           <label>
             Label Section Program
-            <input name="programsLabel" type="text" value="Program Kami">
+            <input name="program_label" type="text" value="Program Kami">
           </label>
           <label>
-            Judul Section Program (boleh HTML)
-            <textarea name="programsHeading" rows="2"></textarea>
+            Judul Section Program
+            <textarea name="program_heading" rows="2">Kegiatan &amp; Program Unggulan</textarea>
           </label>
         </div>
         <div class="repeater-actions">
@@ -124,16 +129,44 @@
         <div id="programsRepeater" class="repeater-list"></div>
       </section>
 
+      <section class="panel panel-section tab-panel" data-panel="fasilitas">
+        <div class="panel-head">
+          <h2>Fasilitas Section</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            Label Section Fasilitas
+            <input name="fasilitas_label" type="text" value="Fasilitas">
+          </label>
+          <label>
+            Judul Section Fasilitas
+            <textarea name="fasilitas_heading" rows="2">Fasilitas &amp; Layanan</textarea>
+          </label>
+        </div>
+        <div class="repeater-actions">
+          <button id="addFasilitasBtn" class="btn ghost" type="button">Tambah Fasilitas</button>
+        </div>
+        <div id="fasilitasRepeater" class="repeater-list"></div>
+      </section>
+
       <section class="panel panel-section tab-panel" data-panel="streaming">
         <div class="panel-head">
           <h2>Streaming Section</h2>
         </div>
         <div class="form-grid">
           <label>
-            Deskripsi Streaming
-            <textarea name="streamingDesc" rows="3"></textarea>
+            Label Section Streaming
+            <input name="streaming_label" type="text" value="Live Streaming">
+          </label>
+          <label>
+            Judul Section Streaming
+            <textarea name="streaming_heading" rows="2">Saksikan Kajian<br>Secara Langsung</textarea>
           </label>
         </div>
+        <label>
+          Deskripsi Streaming
+          <textarea name="streaming_desc" rows="4">Kajian-kajian di Masjid Raudhatul Jannah dapat Anda saksikan secara langsung maupun replay melalui channel YouTube dan Facebook kami. Ilmu Islam tidak mengenal jarak maupun waktu.</textarea>
+        </label>
       </section>
 
       <section class="panel panel-section tab-panel" data-panel="videos">
@@ -142,12 +175,16 @@
         </div>
         <div class="form-grid">
           <label>
+            Label Section Video
+            <input name="videos_label" type="text" value="Video Terbaru">
+          </label>
+          <label>
             Judul Section Video
-            <input name="videosHeading" type="text">
+            <textarea name="videos_heading" rows="2">Video Kegiatan & Kajian di YouTube</textarea>
           </label>
           <label>
             Link Channel YouTube (Lihat Semua Video)
-            <input name="videosChannelUrl" type="text">
+            <input name="videos_channelUrl" type="text" value="https://www.youtube.com/@RaudhatulJannahOfficial">
           </label>
         </div>
         <div class="repeater-actions">
@@ -162,8 +199,12 @@
         </div>
         <div class="form-grid">
           <label>
+            Label Section Jadwal
+            <input name="schedule_label" type="text" value="Agenda">
+          </label>
+          <label>
             Judul Section Jadwal
-            <input name="schedulesHeading" type="text" value="Jadwal Kajian Mendatang">
+            <textarea name="schedule_heading" rows="2">Jadwal Kajian Mendatang</textarea>
           </label>
         </div>
         <div class="repeater-actions">
@@ -178,8 +219,12 @@
         </div>
         <div class="form-grid">
           <label>
-            Judul Galeri
-            <input name="galleryHeading" type="text">
+            Label Section Galeri
+            <input name="gallery_label" type="text" value="Galeri">
+          </label>
+          <label>
+            Judul Section Galeri
+            <textarea name="gallery_heading" rows="2">Momen &amp; Kegiatan Masjid</textarea>
           </label>
         </div>
         <div class="repeater-actions">
@@ -195,67 +240,67 @@
         <div class="form-grid">
           <label>
             Label Section Kontak
-            <input name="contactSectionLabel" type="text">
+            <input name="contact_sectionLabel" type="text" value="Hubungi Kami">
           </label>
           <label>
-            Judul Section Kontak (boleh HTML)
-            <textarea name="contactSectionTitle" rows="2"></textarea>
+            Judul Section Kontak
+            <textarea name="contact_sectionTitle" rows="2">Temukan Kami<br>di Sini</textarea>
           </label>
           <label>
             Label Lokasi
-            <input name="contactLocationLabel" type="text">
+            <input name="contact_locationLabel" type="text" value="Lokasi">
           </label>
           <label>
-            Alamat Kontak (boleh HTML)
-            <textarea name="contactAddress" rows="3"></textarea>
+            Alamat Kontak
+            <textarea name="contact_address" rows="3">Komplek Minimarket RJ Mart<br>JL. Pabrik No. 1, Karanganyar, Kebumen</textarea>
           </label>
           <label>
             Link Google Maps
-            <input name="contactMapsUrl" type="text">
+            <input name="contact_mapsUrl" type="text" value="https://maps.google.com/?q=Masjid+Raudhatul+Jannah+Karanganyar+Kebumen">
           </label>
           <label>
             Link Embed Map
-            <input name="contactMapEmbedUrl" type="text">
+            <input name="contact_mapEmbedUrl" type="text" value="https://maps.google.com/maps?q=Masjid+Raudhatul+Jannah+Karanganyar+Kebumen&output=embed">
           </label>
           <label>
             Label WhatsApp
-            <input name="contactWhatsappLabel" type="text">
+            <input name="contact_whatsappLabel" type="text" value="Telepon / WhatsApp">
           </label>
           <label>
             Link WhatsApp
-            <input name="contactWhatsappUrl" type="text">
+            <input name="contact_whatsappUrl" type="text" value="https://wa.me/6285865206010">
           </label>
           <label>
             Link Telepon
-            <input name="contactPhoneHref" type="text">
+            <input name="contact_phoneHref" type="text" value="tel:085865206010">
           </label>
           <label>
             Teks Nomor Telepon
-            <input name="contactPhoneText" type="text">
+            <input name="contact_phoneText" type="text" value="0858-6520-6010">
           </label>
           <label>
             Link Instagram
-            <input name="contactInstagramUrl" type="text">
+            <input name="contact_instagramUrl" type="text" value="https://www.instagram.com/masjid.rjannah/">
           </label>
           <label>
             Teks Instagram
-            <input name="contactInstagramText" type="text">
+            <input name="contact_instagramText" type="text" value="@masjid.rjannah">
           </label>
           <label>
             Link Facebook
-            <input name="contactFacebookUrl" type="text">
+            <input name="contact_facebookUrl" type="text" value="https://www.facebook.com/masjid.mrj">
           </label>
           <label>
             Teks Facebook
-            <input name="contactFacebookText" type="text">
+            <input name="contact_facebookText" type="text" value="Masjid Raudhatul Jannah">
           </label>
           <label>
             Link YouTube
-            <input name="contactYoutubeUrl" type="text">
+            <input name="contact_youtubeUrl" type="text" value="https://www.youtube.com/@masjid.rjannah/">
           </label>
           <label>
             Teks YouTube
-            <input name="contactYoutubeText" type="text">
+            <input name="contact_youtubeText" type="text" value="Raudhatul Jannah Official">
           </label>
         </div>
       </section>
@@ -267,39 +312,39 @@
         <div class="form-grid">
           <label>
             Label Donasi
-            <input name="donasiLabel" type="text">
+            <input name="donation_label" type="text" value="Donasi &amp; Infaq">
           </label>
           <label>
-            Judul Donasi (boleh HTML)
-            <textarea name="donasiTitle" rows="2"></textarea>
+            Judul Section Donasi
+            <textarea name="donation_title" rows="2">Dukung Kemakmuran<br>Masjid Raudhatul Jannah</textarea>
           </label>
           <label>
             Deskripsi Donasi
-            <textarea name="donasiDesc" rows="3"></textarea>
+            <textarea name="donation_desc" rows="3">Sedekah Anda adalah investasi akhirat yang tak ternilai. Bantu kami terus menjalankan program dakwah, pendidikan, dan pelayanan umat di Karanganyar, Kebumen.</textarea>
           </label>
           <label>
             Nama Bank
-            <input name="bankName" type="text">
+            <input name="donation_bankName" type="text" value="Nama Bank">
           </label>
           <label>
             Label Rekening
-            <input name="bankLabel" type="text">
+            <input name="donation_bankLabel" type="text" value="Nomor Rekening">
           </label>
           <label>
             Nomor Rekening
-            <input name="bankNumber" type="text">
+            <input name="donation_bankNumber" type="text" value="No. Rek: XXXX-XXXX-XXXX">
           </label>
           <label>
             Atas Nama Rekening
-            <input name="bankOwner" type="text">
+            <input name="donation_bankOwner" type="text" value="a.n. Masjid Raudhatul Jannah">
           </label>
           <label>
             Link Tombol Konfirmasi WhatsApp
-            <input name="donasiWhatsappUrl" type="text">
+            <input name="donation_whatsappUrl" type="text" value="https://wa.me/6285865206010">
           </label>
           <label>
             Teks Tombol Konfirmasi
-            <input name="donasiWhatsappText" type="text">
+            <input name="donation_whatsappText" type="text" value="Konfirmasi via WhatsApp">
           </label>
         </div>
       </section>
@@ -311,19 +356,19 @@
         <div class="form-grid">
           <label>
             Nama Brand Footer
-            <input name="footerBrandName" type="text">
+            <input name="footer_brandName" type="text" value="Masjid Raudhatul Jannah">
           </label>
           <label>
             Lokasi Brand Footer
-            <input name="footerBrandLocation" type="text">
+            <input name="footer_brandLocation" type="text" value="Karanganyar - Kebumen">
           </label>
           <label>
             Ayat Footer (boleh HTML)
-            <textarea name="footerAyat" rows="4"></textarea>
+            <textarea name="footer_ayat" rows="4">"Dan sesungguhnya masjid-masjid itu adalah untuk Allah, maka janganlah kamu menyembah seseorang pun di dalamnya beserta Allah." <br>- QS. Al-Jin: 18</textarea>
           </label>
           <label>
             Copyright Footer
-            <input name="footerCopy" type="text">
+            <input name="footer_copy" type="text" value="(c) 2026 Masjid Raudhatul Jannah - Karanganyar, Kebumen. Hak cipta dilindungi.">
           </label>
         </div>
       </section>
@@ -363,7 +408,7 @@
           </select>
         </label>
         <label>
-          Judul Program
+          Judul Section Program
           <input type="text" data-field="title">
         </label>
         <label>
@@ -373,6 +418,40 @@
         <label>
           Tag
           <input type="text" data-field="tag" placeholder="Ahad · 10:00 WIB">
+        </label>
+      </div>
+    </article>
+  </template>
+
+  <template id="fasilitasItemTemplate">
+    <article class="repeater-card" data-role="fasilitas-item">
+      <div class="repeater-card-head">
+        <h3>Fasilitas <span data-role="index"></span></h3>
+        <div class="repeater-card-actions">
+          <button class="btn sm" type="button" data-action="move-fasilitas-up" title="Geser ke atas">&#9650;</button>
+          <button class="btn sm" type="button" data-action="move-fasilitas-down" title="Geser ke bawah">&#9660;</button>
+          <button class="btn danger" type="button" data-action="remove-fasilitas">Hapus</button>
+        </div>
+      </div>
+      <div class="form-grid">
+        <label>
+          Ikon
+          <select data-field="icon">
+            <option value="toilet">Toilet</option>
+            <option value="parkir">Parkir</option>
+            <option value="toko">Toko / Mart</option>
+            <option value="masjid">Masjid</option>
+            <option value="wudhu">Tempat Wudhu</option>
+            <option value="ac">AC / Pendingin</option>
+          </select>
+        </label>
+        <label>
+          Judul Fasilitas
+          <input type="text" data-field="title">
+        </label>
+        <label>
+          Deskripsi
+          <textarea data-field="desc" rows="3"></textarea>
         </label>
       </div>
     </article>

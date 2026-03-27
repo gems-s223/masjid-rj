@@ -1,7 +1,7 @@
   const CONTENT_STORAGE_KEY = 'rj_site_content_v1';
   const LIVE_STORAGE_KEY = 'rj_live_status';
 
-  const DEFAULT_VIDEOS = [
+  const DEFAULT_VIDEOS_ITEMS = [
     {
       url: 'https://www.youtube.com/watch?v=Q_9Nt_tNuaY',
       image: 'https://img.youtube.com/vi/Q_9Nt_tNuaY/maxresdefault.jpg',
@@ -36,7 +36,7 @@
     { caption: 'Live Streaming', imageUrl: '' }
   ];
 
-  const DEFAULT_PROGRAMS = [
+  const DEFAULT_PROGRAM_ITEMS = [
     { icon: 'kajian-pagi', title: 'Kajian Ahad Pagi', desc: 'Kajian rutin setiap Ahad pagi mengkaji kitab-kitab para ulama dengan metode talaqqi yang sistematis dan mudah dipahami seluruh kalangan.', tag: "Ahad · 10:00 WIB" },
     { icon: 'streaming', title: 'Live Streaming', desc: 'Saksikan kajian ilmu dari mana saja melalui siaran langsung di YouTube dan Facebook. Ilmu tanpa batas, tidak terikat tempat maupun waktu.', tag: 'YouTube · Facebook' },
     { icon: 'anak', title: 'Kegiatan Anak', desc: "Program khusus anak-anak: tahsin Al-Qur'an, hafalan surat pendek, dan pendidikan akhlak Islami yang menyenangkan dan penuh semangat.", tag: 'Weekend Program' },
@@ -44,6 +44,21 @@
     { icon: 'sholat', title: 'Sholat Berjamaah', desc: 'Fasilitas lengkap untuk sholat berjamaah lima waktu. Mari ramaikan shaf masjid dan rasakan keindahan ukhuwah Islamiyah.', tag: '5 Waktu Sholat' },
     { icon: 'zakat', title: 'Zakat & Infaq', desc: 'Layanan zakat, infaq, dan sedekah yang amanah untuk membantu saudara muslim yang membutuhkan di sekitar Karanganyar, Kebumen.', tag: 'LAZIS Raudhatul Jannah' }
   ];
+
+  const DEFAULT_FASILITAS_ITEMS = [
+    { icon: 'toilet', title: 'Toilet Gratis', desc: 'Fasilitas toilet bersih tersedia gratis untuk seluruh jamaah dan pengunjung masjid, terjaga kebersihannya setiap saat.', tag: 'Gratis & Bersih' },
+    { icon: 'parkir', title: 'Parkir Luas & Gratis', desc: 'Area parkir yang luas, nyaman, dan gratis untuk kendaraan roda dua maupun roda empat seluruh jamaah dan pengunjung.', tag: 'Roda 2 & Roda 4' },
+    { icon: 'toko', title: 'Toko RJ Mart', desc: 'Minimarket RJ Mart berlokasi di kompleks masjid, memudahkan jamaah memenuhi kebutuhan sehari-hari sebelum atau sesudah ibadah.', tag: 'Buka Setiap Hari' }
+  ];
+
+  const FASILITAS_ICONS = {
+    'toilet': '<path d="M16 6 C16 6 12 10 12 16 C12 20 14 22 16 24 L16 42"/><path d="M20 6 L20 18 C20 20 18 22 16 22"/><path d="M24 6 L24 42"/><path d="M28 28 C28 28 36 26 36 34 C36 39 32 42 28 42"/><path d="M28 28 C28 28 36 26 36 20 C36 14 30 12 28 16"/>',
+    'parkir': '<rect x="4" y="28" width="40" height="12" rx="3"/><path d="M8 28 L14 14 H34 L40 28"/><circle cx="14" cy="40" r="3"/><circle cx="34" cy="40" r="3"/><path d="M4 34 H44"/><path d="M18 20 H30"/>',
+    'toko': '<path d="M6 14 L6 42 H42 V14 L24 4 Z"/><rect x="17" y="28" width="14" height="14" rx="1"/><path d="M21 20 Q24 16 27 20"/><line x1="14" y1="42" x2="14" y2="14"/><line x1="34" y1="42" x2="34" y2="14"/>',
+    'masjid': '<path d="M10 38V16 Q24 8 38 16 L38 38"/><path d="M18 38V28H30V38"/><path d="M22 28V22 Q24 19 26 22 V28"/><line x1="6" y1="38" x2="42" y2="38"/>',
+    'wudhu': '<path d="M12 14v12"/><path d="M12 14c0-4 4-6 8-4s4 8 0 12"/><path d="M8 30v8h8v-8"/><path d="M8 42h8"/>',
+    'ac': '<rect x="6" y="10" width="36" height="20" rx="2"/><path d="M10 34v6"/><path d="M38 34v6"/><path d="M10 30h28"/><circle cx="14" cy="20" r="2"/><circle cx="24" cy="20" r="2"/><circle cx="34" cy="20" r="2"/>'
+  };
 
   const PROGRAM_ICONS = {
     'kajian-pagi': '<circle cx="24" cy="24" r="20"/><path d="M24 14v10l6 4"/><path d="M16 10 Q24 6 32 10"/>',
@@ -64,42 +79,58 @@
   }
 
   function normalizeVideos(content) {
-    if (Array.isArray(content.videos) && content.videos.length > 0) {
-      return content.videos.map((item, index) => ({
-        url: String(item && item.url ? item.url : DEFAULT_VIDEOS[index % DEFAULT_VIDEOS.length].url),
-        image: String(item && item.image ? item.image : DEFAULT_VIDEOS[index % DEFAULT_VIDEOS.length].image),
+    const videosSection = content?.videos;
+    if (videosSection?.items && Array.isArray(videosSection.items) && videosSection.items.length > 0) {
+      return videosSection.items.map((item, index) => ({
+        url: String(item && item.url ? item.url : DEFAULT_VIDEOS_ITEMS[index % DEFAULT_VIDEOS_ITEMS.length].url),
+        image: String(item && item.image ? item.image : DEFAULT_VIDEOS_ITEMS[index % DEFAULT_VIDEOS_ITEMS.length].image),
         title: String(item && item.title ? item.title : 'Video Kajian Terbaru'),
         meta: String(item && item.meta ? item.meta : 'Raudhatul Jannah Official')
       }));
     }
-
-    return DEFAULT_VIDEOS.map((item, index) => ({
-      url: content[`video${index + 1}Url`] || item.url,
-      image: content[`video${index + 1}Image`] || item.image,
-      title: content[`video${index + 1}Title`] || item.title,
-      meta: content[`video${index + 1}Meta`] || item.meta
-    }));
+    return DEFAULT_VIDEOS_ITEMS.map((item) => ({ ...item }));
   }
 
   function normalizeGalleryItems(content) {
-    if (Array.isArray(content.galleryItems) && content.galleryItems.length > 0) {
-      return content.galleryItems.map((item, index) => ({
+    const gallerySection = content?.gallery;
+    if (gallerySection?.items && Array.isArray(gallerySection.items) && gallerySection.items.length > 0) {
+      return gallerySection.items.map((item, index) => ({
         caption: String(item && item.caption ? item.caption : `Galeri ${index + 1}`),
         imageUrl: String(item && item.imageUrl ? item.imageUrl : '')
       }));
     }
+    return DEFAULT_GALLERY_ITEMS.map((item) => ({ ...item }));
+  }
 
-    return DEFAULT_GALLERY_ITEMS.map((item, index) => ({
-      caption: content[`galleryCap${index + 1}`] || item.caption,
-      imageUrl: content[`galleryImage${index + 1}`] || item.imageUrl
-    }));
+  function normalizeSchedules(content) {
+    const scheduleSection = content?.schedule;
+    if (scheduleSection?.items && Array.isArray(scheduleSection.items) && scheduleSection.items.length > 0) {
+      return scheduleSection.items;
+    }
+    return [];
+  }
+
+  function normalizePrograms(content) {
+    const programSection = content?.program;
+    if (programSection?.items && Array.isArray(programSection.items) && programSection.items.length > 0) {
+      return programSection.items;
+    }
+    return DEFAULT_PROGRAM_ITEMS;
+  }
+
+  function normalizeFasilitas(content) {
+    const fasilitasSection = content?.fasilitas;
+    if (fasilitasSection?.items && Array.isArray(fasilitasSection.items) && fasilitasSection.items.length > 0) {
+      return fasilitasSection.items;
+    }
+    return DEFAULT_FASILITAS_ITEMS;
   }
 
   function renderVideos(content) {
-    const grid = document.querySelector('#videos .videos-grid');
+    const grid = document.getElementById('videosGrid');
     if (!grid) return;
 
-    const videos = normalizeVideos(content || {});
+    const videos = normalizeVideos(content);
     grid.innerHTML = videos.map((video) => {
       const videoUrl = escapeHtml(video.url);
       const imageUrl = escapeHtml(video.image);
@@ -125,11 +156,10 @@
   }
 
   function renderGallery(content) {
-    const grid = document.querySelector('#galeri .gallery-grid');
+    const grid = document.getElementById('galleryGrid');
     if (!grid) return;
 
-    const items = normalizeGalleryItems(content || {});
-    // Set data-count so CSS can pick the right layout
+    const items = normalizeGalleryItems(content);
     grid.dataset.count = items.length <= 6 ? String(items.length) : 'many';
 
     grid.innerHTML = items.map((item, index) => {
@@ -154,15 +184,10 @@
     const grid = document.getElementById('scheduleGrid');
     if (!grid) return;
 
-    let schedules = content && Array.isArray(content.schedules) ? content.schedules : [];
+    const schedules = normalizeSchedules(content);
     
     if (schedules.length === 0) {
-      schedules = [
-        { day: '23', month: 'Mar', title: 'Kajian Ahad Pagi', detail: 'Kitab Al-Mulakhos Fiqh<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah', time: '10:00 WIB - Menjelang Dzuhur' },
-        { day: '26', month: 'Mar', title: 'Kajian Malam Rabu', detail: 'Kitab Shahih Fiqih Sunnah<br>Bersama: Ust. Abdullah Hakim hafizhahullah', time: "Ba'da Isya' - 21:00 WIB" },
-        { day: '30', month: 'Mar', title: 'Kajian Ahad Pagi', detail: 'Kitab Al-Mulakhos Fiqh - Lanjutan<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah', time: '10:00 WIB - Menjelang Dzuhur' },
-        { day: '05', month: 'Apr', title: 'Tahsin Al-Quran', detail: 'Pembelajaran Tajwid &amp; Makhraj Huruf<br>Terbuka untuk umum, ikhwan &amp; akhwat', time: "Ba'da Ashar - 16:30 WIB" }
-      ];
+      return;
     }
 
     const delays = [0, 0.1, 0.05, 0.15];
@@ -197,9 +222,7 @@
     const grid = document.getElementById('programsGrid');
     if (!grid) return;
 
-    const programs = (Array.isArray(content && content.programs) && content.programs.length > 0)
-      ? content.programs
-      : DEFAULT_PROGRAMS;
+    const programs = normalizePrograms(content);
 
     const delays = [0, 0.1, 0.2, 0.05, 0.15, 0.25];
     grid.innerHTML = programs.map((item, index) => {
@@ -223,36 +246,79 @@
     grid.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
   }
 
+  function renderFasilitas(content) {
+    const grid = document.getElementById('fasilitasGrid');
+    if (!grid) return;
+
+    const items = normalizeFasilitas(content);
+    const delays = [0, 0.1, 0.2];
+
+    grid.innerHTML = items.map((item, index) => {
+      const iconKey = item.icon && FASILITAS_ICONS[item.icon] ? item.icon : 'toilet';
+      const svgPaths = FASILITAS_ICONS[iconKey];
+      const title = escapeHtml(item.title || '');
+      const desc = escapeHtml(item.desc || '');
+      const tag = escapeHtml(item.tag || '');
+      const delay = delays[index % delays.length];
+
+      return `
+      <div class="fac-card reveal" style="transition-delay:${delay}s">
+        <svg class="fac-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${svgPaths}</svg>
+        <h3 class="fac-title">${title}</h3>
+        <p class="fac-desc">${desc}</p>
+        ${tag ? `<span class="fac-tag">${tag}</span>` : ''}
+      </div>`;
+    }).join('');
+
+    grid.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  }
+
   function applyContent(content) {
-    Object.entries(content || {}).forEach(([key, value]) => {
-      if (typeof value !== 'string') return;
+    const sections = ['hero', 'about', 'streaming', 'videos', 'schedule', 'gallery', 'contact', 'donation', 'footer', 'program', 'fasilitas'];
+    
+    sections.forEach((section) => {
+      const sectionData = content?.[section];
+      if (!sectionData || typeof sectionData !== 'object') return;
 
-      document.querySelectorAll(`[data-content-key="${key}"]`).forEach((element) => {
-        const attr = element.getAttribute('data-content-attr');
-        if (!attr) {
-          element.innerHTML = value;
-          return;
-        }
+      Object.entries(sectionData).forEach(([key, value]) => {
+        if (typeof value !== 'string') return;
 
-        if (value.trim().length === 0) {
-          element.removeAttribute(attr);
-        } else {
-          element.setAttribute(attr, value);
-        }
-
-        if (element.classList.contains('gl-photo')) {
-          const parent = element.closest('.gl-item');
-          if (parent) {
-            parent.classList.toggle('has-photo', value.trim().length > 0);
+        const dataKey = `${section}_${key}`;
+        document.querySelectorAll(`[data-content-key="${dataKey}"]`).forEach((element) => {
+          const attr = element.getAttribute('data-content-attr');
+          if (!attr) {
+            element.innerHTML = value;
+            return;
           }
-        }
+
+          if (value.trim().length === 0) {
+            element.removeAttribute(attr);
+          } else {
+            element.setAttribute(attr, value);
+          }
+        });
       });
+
+      if (section === 'about' && sectionData.stats && Array.isArray(sectionData.stats)) {
+        sectionData.stats.forEach((stat, index) => {
+          const numKey = `about_stat${index + 1}_number`;
+          const lblKey = `about_stat${index + 1}_label`;
+          
+          document.querySelectorAll(`[data-content-key="${numKey}"]`).forEach((el) => {
+            el.textContent = stat.number || '';
+          });
+          document.querySelectorAll(`[data-content-key="${lblKey}"]`).forEach((el) => {
+            el.textContent = stat.label || '';
+          });
+        });
+      }
     });
 
-    renderVideos(content || {});
-    renderGallery(content || {});
+    renderVideos(content);
+    renderGallery(content);
     renderSchedules(content);
     renderPrograms(content);
+    renderFasilitas(content);
   }
 
   function applyLiveBadge(isLive) {

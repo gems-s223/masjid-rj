@@ -4,7 +4,34 @@ const API_CONTENT_URL = '/api/content';
 const API_UPLOAD_URL = '/api/upload-image';
 const API_ADMIN_LOGOUT_URL = '/api/admin/logout';
 
-const DEFAULT_SCHEDULES = [
+const DEFAULT_VIDEOS_ITEMS = [
+  {
+    url: 'https://www.youtube.com/watch?v=Q_9Nt_tNuaY',
+    image: 'https://img.youtube.com/vi/Q_9Nt_tNuaY/maxresdefault.jpg',
+    title: 'Video Kajian Terbaru',
+    meta: 'Raudhatul Jannah Official'
+  },
+  {
+    url: 'https://www.youtube.com/watch?v=QURlHtbi5PY',
+    image: 'https://img.youtube.com/vi/QURlHtbi5PY/maxresdefault.jpg',
+    title: 'Video Kajian Terbaru',
+    meta: 'Raudhatul Jannah Official'
+  },
+  {
+    url: 'https://www.youtube.com/watch?v=NPfj_f4r2Ck',
+    image: 'https://img.youtube.com/vi/NPfj_f4r2Ck/maxresdefault.jpg',
+    title: 'Video Kajian Terbaru',
+    meta: 'Raudhatul Jannah Official'
+  },
+  {
+    url: 'https://www.youtube.com/watch?v=44X5RHUQppI',
+    image: 'https://img.youtube.com/vi/44X5RHUQppI/maxresdefault.jpg',
+    title: 'Video Kajian Terbaru',
+    meta: 'Raudhatul Jannah Official'
+  }
+];
+
+const DEFAULT_SCHEDULE_ITEMS = [
   {
     day: '23',
     month: 'Mar',
@@ -35,34 +62,15 @@ const DEFAULT_SCHEDULES = [
   }
 ];
 
-const DEFAULT_VIDEOS = [
-  {
-    url: 'https://www.youtube.com/watch?v=Q_9Nt_tNuaY',
-    image: 'https://img.youtube.com/vi/Q_9Nt_tNuaY/maxresdefault.jpg',
-    title: 'Video Kajian Terbaru',
-    meta: 'Raudhatul Jannah Official'
-  },
-  {
-    url: 'https://www.youtube.com/watch?v=QURlHtbi5PY',
-    image: 'https://img.youtube.com/vi/QURlHtbi5PY/maxresdefault.jpg',
-    title: 'Video Kajian Terbaru',
-    meta: 'Raudhatul Jannah Official'
-  },
-  {
-    url: 'https://www.youtube.com/watch?v=NPfj_f4r2Ck',
-    image: 'https://img.youtube.com/vi/NPfj_f4r2Ck/maxresdefault.jpg',
-    title: 'Video Kajian Terbaru',
-    meta: 'Raudhatul Jannah Official'
-  },
-  {
-    url: 'https://www.youtube.com/watch?v=44X5RHUQppI',
-    image: 'https://img.youtube.com/vi/44X5RHUQppI/maxresdefault.jpg',
-    title: 'Video Kajian Terbaru',
-    meta: 'Raudhatul Jannah Official'
-  }
+const DEFAULT_GALLERY_ITEMS = [
+  { caption: 'Sholat Berjamaah', imageUrl: '' },
+  { caption: 'Kajian Rutin Ahad Pagi', imageUrl: '' },
+  { caption: 'Kegiatan Anak', imageUrl: '' },
+  { caption: 'Halaqah Ilmiah', imageUrl: '' },
+  { caption: 'Live Streaming', imageUrl: '' }
 ];
 
-const DEFAULT_PROGRAMS = [
+const DEFAULT_PROGRAM_ITEMS = [
   {
     icon: 'kajian-pagi',
     title: 'Kajian Ahad Pagi',
@@ -101,70 +109,126 @@ const DEFAULT_PROGRAMS = [
   }
 ];
 
-const DEFAULT_GALLERY_ITEMS = [
-  { caption: 'Sholat Berjamaah', imageUrl: '' },
-  { caption: 'Kajian Rutin Ahad Pagi', imageUrl: '' },
-  { caption: 'Kegiatan Anak', imageUrl: '' },
-  { caption: 'Halaqah Ilmiah', imageUrl: '' },
-  { caption: 'Live Streaming', imageUrl: '' }
+const DEFAULT_FASILITAS_ITEMS = [
+  {
+    icon: 'toilet',
+    title: 'Toilet Gratis',
+    desc: 'Fasilitas toilet bersih tersedia gratis untuk seluruh jamaah dan pengunjung masjid, terjaga kebersihannya setiap saat.'
+  },
+  {
+    icon: 'parkir',
+    title: 'Parkir Luas & Gratis',
+    desc: 'Area parkir yang luas, nyaman, dan gratis untuk kendaraan roda dua maupun roda empat seluruh jamaah dan pengunjung.'
+  },
+  {
+    icon: 'toko',
+    title: 'Toko RJ Mart',
+    desc: 'Minimarket RJ Mart berlokasi di kompleks masjid, memudahkan jamaah memenuhi kebutuhan sehari-hari sebelum atau sesudah ibadah.'
+  }
 ];
 
 const defaultContent = {
-  programsLabel: 'Program Kami',
-  programsHeading: 'Kegiatan &amp; Program Unggulan',
-  stat1Number: '5+',
-  stat1Label: 'Tahun Berdiri',
-  stat2Number: '20+',
-  stat2Label: 'Program/Tahun',
-  stat3Number: '3K+',
-  stat3Label: "Jama'ah",
-  heroTitle: 'Masjid<br><em>Raudhatul</em> Jannah',
-  heroSub: 'Taman Surga di Bumi Karanganyar',
-  heroTagline: 'Rumah Ibadah <span>&middot;</span> Pusat Ilmu <span>&middot;</span> Cahaya Umat',
-  aboutTitle: 'Lebih dari<br>Sekadar Masjid',
-  aboutP1: 'Masjid Raudhatul Jannah adalah pusat kegiatan Islam yang berlokasi di Komplek Minimarket RJ Mart, Karanganyar, Kebumen. Nama <em>Raudhatul Jannah</em> - yang berarti "Taman Surga" - mencerminkan visi kami untuk menjadikan masjid ini sebagai tempat yang penuh keberkahan, ilmu, dan ketenangan bagi seluruh umat.',
-  aboutP2: 'Kami berkomitmen untuk menghadirkan kajian ilmu yang bersumber dari Al-Quran dan As-Sunnah sesuai pemahaman Salafus Shalih, serta melayani kebutuhan ibadah dan pendidikan masyarakat sekitar.',
-  aboutP3: 'Dengan program kajian rutin, live streaming, dan kegiatan untuk seluruh kalangan - anak, remaja, hingga dewasa - Raudhatul Jannah hadir sebagai rumah bagi setiap muslim yang ingin menuntut ilmu dan mendekatkan diri kepada Allah.',
-  streamingDesc: 'Kajian-kajian di Masjid Raudhatul Jannah dapat Anda saksikan secara langsung maupun replay melalui channel YouTube dan Facebook kami. Ilmu Islam tidak mengenal jarak maupun waktu.',
-  videosHeading: 'Kajian di YouTube',
-  videosChannelUrl: 'https://www.youtube.com/@RaudhatulJannahOfficial',
-  schedulesHeading: 'Jadwal Kajian Mendatang',
-  galleryHeading: 'Momen &amp; Kegiatan Masjid',
-  contactSectionLabel: 'Hubungi Kami',
-  contactSectionTitle: 'Temukan Kami<br>di Sini',
-  contactLocationLabel: 'Lokasi',
-  contactAddress: 'Komplek Minimarket RJ Mart<br>JL. Pabrik No. 1, Karanganyar, Kebumen',
-  contactMapsUrl: 'https://maps.google.com/?q=Masjid+Raudhatul+Jannah+Karanganyar+Kebumen',
-  contactMapEmbedUrl: 'https://maps.google.com/maps?q=Masjid+Raudhatul+Jannah+Karanganyar+Kebumen&output=embed',
-  contactWhatsappLabel: 'Telepon / WhatsApp',
-  contactWhatsappUrl: 'https://wa.me/6285865206010',
-  contactPhoneHref: 'tel:085865206010',
-  contactPhoneText: '0858-6520-6010',
-  contactInstagramLabel: 'Instagram',
-  contactInstagramUrl: 'https://www.instagram.com/masjid.rjannah/',
-  contactInstagramText: '@masjid.rjannah',
-  contactFacebookLabel: 'Facebook',
-  contactFacebookUrl: 'https://www.facebook.com/masjid.mrj',
-  contactFacebookText: 'Masjid Raudhatul Jannah',
-  contactYoutubeLabel: 'YouTube',
-  contactYoutubeUrl: 'https://www.youtube.com/@masjid.rjannah/',
-  contactYoutubeText: 'Raudhatul Jannah Official',
-  donasiLabel: 'Donasi &amp; Infaq',
-  donasiTitle: 'Dukung Kemakmuran<br>Masjid Raudhatul Jannah',
-  donasiDesc: 'Sedekah Anda adalah investasi akhirat yang tak ternilai. Bantu kami terus menjalankan program dakwah, pendidikan, dan pelayanan umat di Karanganyar, Kebumen.',
-  bankLabel: 'Nomor Rekening',
-  bankName: 'Nama Bank',
-  bankNumber: 'No. Rek: XXXX-XXXX-XXXX',
-  bankOwner: 'a.n. Masjid Raudhatul Jannah',
-  donasiWhatsappUrl: 'https://wa.me/6285865206010',
-  donasiWhatsappText: 'Konfirmasi via WhatsApp',
-  footerBrandName: 'Masjid Raudhatul Jannah',
-  footerBrandLocation: 'Karanganyar - Kebumen',
-  footerAyat: '"Dan sesungguhnya masjid-masjid itu adalah untuk Allah, maka janganlah kamu menyembah seseorang pun di dalamnya beserta Allah." <br>- QS. Al-Jin: 18',
-  footerCopy: '(c) 2026 Masjid Raudhatul Jannah - Karanganyar, Kebumen. Hak cipta dilindungi.'
+  hero: {
+    title: 'Masjid<br><em>Raudhatul</em> Jannah',
+    sub: 'Taman Surga di Bumi Karanganyar',
+    tagline: 'Rumah Ibadah <span>&middot;</span> Pusat Ilmu <span>&middot;</span> Cahaya Umat'
+  },
+  about: {
+    label: 'Tentang Kami',
+    heading: 'Lebih dari<br>Sekadar Masjid',
+    p1: 'Masjid Raudhatul Jannah adalah pusat kegiatan Islam yang berlokasi di Komplek Minimarket RJ Mart, Karanganyar, Kebumen. Nama <em>Raudhatul Jannah</em> - yang berarti "Taman Surga" - mencerminkan visi kami untuk menjadikan masjid ini sebagai tempat yang penuh keberkahan, ilmu, dan ketenangan bagi seluruh umat.',
+    p2: 'Kami berkomitmen untuk menghadirkan kajian ilmu yang bersumber dari Al-Quran dan As-Sunnah sesuai pemahaman Salafus Shalih, serta melayani kebutuhan ibadah dan pendidikan masyarakat sekitar.',
+    p3: 'Dengan program kajian rutin, live streaming, dan kegiatan untuk seluruh kalangan - anak, remaja, hingga dewasa - Raudhatul Jannah hadir sebagai rumah bagi setiap muslim yang ingin menuntut ilmu dan mendekatkan diri kepada Allah.',
+    stats: [
+      { number: '5+', label: 'Tahun Berdiri' },
+      { number: '20+', label: 'Program/Tahun' },
+      { number: '2K+', label: "Jama'ah" }
+    ]
+  },
+  program: {
+    label: 'Program Kami',
+    heading: 'Kegiatan &amp; Program Unggulan',
+    items: DEFAULT_PROGRAM_ITEMS
+  },
+  fasilitas: {
+    label: 'Fasilitas',
+    heading: 'Fasilitas &amp; Layanan',
+    items: DEFAULT_FASILITAS_ITEMS
+  },
+  streaming: {
+    label: 'Live Streaming',
+    heading: 'Saksikan Kajian<br>Secara Langsung',
+    desc: 'Kajian-kajian di Masjid Raudhatul Jannah dapat Anda saksikan secara langsung maupun replay melalui channel YouTube dan Facebook kami. Ilmu Islam tidak mengenal jarak maupun waktu.'
+  },
+  videos: {
+    label: 'Video Kajian',
+    heading: 'Kajian di YouTube',
+    channelUrl: 'https://www.youtube.com/@RaudhatulJannahOfficial',
+    items: DEFAULT_VIDEOS_ITEMS
+  },
+  schedule: {
+    label: 'Jadwal',
+    heading: 'Jadwal Kajian Mendatang',
+    items: DEFAULT_SCHEDULE_ITEMS
+  },
+  gallery: {
+    label: 'Galeri Foto',
+    heading: 'Momen &amp; Kegiatan Masjid',
+    items: DEFAULT_GALLERY_ITEMS
+  },
+  contact: {
+    sectionLabel: 'Hubungi Kami',
+    sectionTitle: 'Temukan Kami<br>di Sini',
+    locationLabel: 'Lokasi',
+    address: 'Komplek Minimarket RJ Mart<br>JL. Pabrik No. 1, Karanganyar, Kebumen',
+    mapsUrl: 'https://maps.google.com/?q=Masjid+Raudhatul+Jannah+Karanganyar+Kebumen',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Masjid+Raudhatul+Jannah+Karanganyar+Kebumen&output=embed',
+    whatsappLabel: 'Telepon / WhatsApp',
+    whatsappUrl: 'https://wa.me/6285865206010',
+    phoneHref: 'tel:085865206010',
+    phoneText: '0858-6520-6010',
+    instagramLabel: 'Instagram',
+    instagramUrl: 'https://www.instagram.com/masjid.rjannah/',
+    instagramText: '@masjid.rjannah',
+    facebookLabel: 'Facebook',
+    facebookUrl: 'https://www.facebook.com/masjid.mrj',
+    facebookText: 'Masjid Raudhatul Jannah',
+    youtubeLabel: 'YouTube',
+    youtubeUrl: 'https://www.youtube.com/@masjid.rjannah/',
+    youtubeText: 'Raudhatul Jannah Official'
+  },
+  donation: {
+    label: 'Donasi &amp; Infaq',
+    title: 'Dukung Kemakmuran<br>Masjid Raudhatul Jannah',
+    desc: 'Sedekah Anda adalah investasi akhirat yang tak ternilai. Bantu kami terus menjalankan program dakwah, pendidikan, dan pelayanan umat di Karanganyar, Kebumen.',
+    bankName: 'Nama Bank',
+    bankLabel: 'Nomor Rekening',
+    bankNumber: 'No. Rek: XXXX-XXXX-XXXX',
+    bankOwner: 'a.n. Masjid Raudhatul Jannah',
+    whatsappUrl: 'https://wa.me/6285865206010',
+    whatsappText: 'Konfirmasi via WhatsApp'
+  },
+  footer: {
+    brandName: 'Masjid Raudhatul Jannah',
+    brandLocation: 'Karanganyar - Kebumen',
+    ayat: '"Dan sesungguhnya masjid-masjid itu adalah untuk Allah, maka janganlah kamu menyembah seseorang pun di dalamnya beserta Allah." <br>- QS. Al-Jin: 18',
+    copy: '(c) 2026 Masjid Raudhatul Jannah - Karanganyar, Kebumen. Hak cipta dilindungi.'
+  }
 };
 
-const scalarKeys = Object.keys(defaultContent);
+const scalarKeys = {
+  hero: ['title', 'sub', 'tagline'],
+  about: ['label', 'heading', 'p1', 'p2', 'p3'],
+  program: ['label', 'heading'],
+  fasilitas: ['label', 'heading'],
+  streaming: ['label', 'heading', 'desc'],
+  videos: ['label', 'heading', 'channelUrl'],
+  schedule: ['label', 'heading'],
+  gallery: ['label', 'heading'],
+  contact: ['sectionLabel', 'sectionTitle', 'locationLabel', 'address', 'mapsUrl', 'mapEmbedUrl', 'whatsappLabel', 'whatsappUrl', 'phoneHref', 'phoneText', 'instagramLabel', 'instagramUrl', 'instagramText', 'facebookLabel', 'facebookUrl', 'facebookText', 'youtubeLabel', 'youtubeUrl', 'youtubeText'],
+  donation: ['label', 'title', 'desc', 'bankName', 'bankLabel', 'bankNumber', 'bankOwner', 'whatsappUrl', 'whatsappText'],
+  footer: ['brandName', 'brandLocation', 'ayat', 'copy']
+};
 
 const form = document.getElementById('adminForm');
 const statusText = document.getElementById('statusText');
@@ -174,16 +238,20 @@ const logoutBtn = document.getElementById('logoutBtn');
 const isLiveCheckbox = document.getElementById('isLive');
 const addVideoBtn = document.getElementById('addVideoBtn');
 const addGalleryBtn = document.getElementById('addGalleryBtn');
+const addFasilitasBtn = document.getElementById('addFasilitasBtn');
 const videosRepeater = document.getElementById('videosRepeater');
 const galleryRepeater = document.getElementById('galleryRepeater');
+const fasilitasRepeater = document.getElementById('fasilitasRepeater');
 const videoItemTemplate = document.getElementById('videoItemTemplate');
 const galleryItemTemplate = document.getElementById('galleryItemTemplate');
+const fasilitasItemTemplate = document.getElementById('fasilitasItemTemplate');
 
 const state = {
-  videos: [],
+  videosItems: [],
   galleryItems: [],
-  schedules: [],
-  programs: []
+  scheduleItems: [],
+  programItems: [],
+  fasilitasItems: []
 };
 
 function showStatus(message) {
@@ -191,11 +259,11 @@ function showStatus(message) {
 }
 
 function cloneDefaultVideos() {
-  return DEFAULT_VIDEOS.map((item) => ({ ...item }));
+  return DEFAULT_VIDEOS_ITEMS.map((item) => ({ ...item }));
 }
 
 function cloneDefaultPrograms() {
-  return DEFAULT_PROGRAMS.map((item) => ({ ...item }));
+  return DEFAULT_PROGRAM_ITEMS.map((item) => ({ ...item }));
 }
 
 function cloneDefaultGalleryItems() {
@@ -203,7 +271,11 @@ function cloneDefaultGalleryItems() {
 }
 
 function cloneDefaultSchedules() {
-  return DEFAULT_SCHEDULES.map((item) => ({ ...item }));
+  return DEFAULT_SCHEDULE_ITEMS.map((item) => ({ ...item }));
+}
+
+function cloneDefaultFasilitas() {
+  return DEFAULT_FASILITAS_ITEMS.map((item) => ({ ...item }));
 }
 
 function readSavedContent() {
@@ -220,55 +292,81 @@ function readSavedContent() {
 
 function normalizeContent(raw) {
   const safe = raw && typeof raw === 'object' ? raw : {};
-  const normalized = { ...defaultContent };
+  const normalized = JSON.parse(JSON.stringify(defaultContent));
 
-  scalarKeys.forEach((key) => {
-    if (typeof safe[key] === 'string') {
-      normalized[key] = safe[key];
+  const sections = ['hero', 'about', 'program', 'fasilitas', 'streaming', 'videos', 'schedule', 'gallery', 'contact', 'donation', 'footer'];
+  
+  sections.forEach((section) => {
+    if (safe[section] && typeof safe[section] === 'object') {
+      const sectionKeys = scalarKeys[section] || [];
+      sectionKeys.forEach((key) => {
+        if (typeof safe[section][key] === 'string') {
+          normalized[section][key] = safe[section][key];
+        }
+      });
     }
   });
 
-  if (Array.isArray(safe.videos) && safe.videos.length > 0) {
-    normalized.videos = safe.videos.map((item, index) => ({
-      url: typeof item?.url === 'string' ? item.url : DEFAULT_VIDEOS[index % DEFAULT_VIDEOS.length].url,
+  if (safe.about && safe.about.stats && Array.isArray(safe.about.stats)) {
+    normalized.about.stats = safe.about.stats.map((item) => ({
+      number: typeof item?.number === 'string' ? item.number : '',
+      label: typeof item?.label === 'string' ? item.label : ''
+    }));
+  }
+
+  if (safe.videos && safe.videos.items && Array.isArray(safe.videos.items) && safe.videos.items.length > 0) {
+    normalized.videos.items = safe.videos.items.map((item, index) => ({
+      url: typeof item?.url === 'string' ? item.url : DEFAULT_VIDEOS_ITEMS[index % DEFAULT_VIDEOS_ITEMS.length].url,
       image: typeof item?.image === 'string' ? item.image : '',
       title: typeof item?.title === 'string' ? item.title : 'Video Kajian Terbaru',
       meta: typeof item?.meta === 'string' ? item.meta : 'Raudhatul Jannah Official'
     }));
   } else {
-    normalized.videos = cloneDefaultVideos().map((item, index) => ({
-      url: typeof safe[`video${index + 1}Url`] === 'string' ? safe[`video${index + 1}Url`] : item.url,
-      image: typeof safe[`video${index + 1}Image`] === 'string' ? safe[`video${index + 1}Image`] : item.image,
-      title: typeof safe[`video${index + 1}Title`] === 'string' ? safe[`video${index + 1}Title`] : item.title,
-      meta: typeof safe[`video${index + 1}Meta`] === 'string' ? safe[`video${index + 1}Meta`] : item.meta
-    }));
+    normalized.videos.items = cloneDefaultVideos();
   }
 
-  if (Array.isArray(safe.galleryItems) && safe.galleryItems.length > 0) {
-    normalized.galleryItems = safe.galleryItems.map((item, index) => ({
-      caption: typeof item?.caption === 'string' ? item.caption : `Item ${index + 1}`,
+  if (safe.gallery && safe.gallery.items && Array.isArray(safe.gallery.items) && safe.gallery.items.length > 0) {
+    normalized.gallery.items = safe.gallery.items.map((item) => ({
+      caption: typeof item?.caption === 'string' ? item.caption : '',
+      imageUrl: typeof item?.imageUrl === 'string' ? item.imageUrl : ''
+    }));
+  } else if (safe.galleryItems && Array.isArray(safe.galleryItems) && safe.galleryItems.length > 0) {
+    normalized.gallery.items = safe.galleryItems.map((item) => ({
+      caption: typeof item?.caption === 'string' ? item.caption : '',
       imageUrl: typeof item?.imageUrl === 'string' ? item.imageUrl : ''
     }));
   } else {
-    normalized.galleryItems = cloneDefaultGalleryItems().map((item, index) => ({
-      caption: typeof safe[`galleryCap${index + 1}`] === 'string' ? safe[`galleryCap${index + 1}`] : item.caption,
-      imageUrl: typeof safe[`galleryImage${index + 1}`] === 'string' ? safe[`galleryImage${index + 1}`] : item.imageUrl
-    }));
+    normalized.gallery.items = cloneDefaultGalleryItems();
   }
 
-  if (Array.isArray(safe.programs) && safe.programs.length > 0) {
-    normalized.programs = safe.programs.map((item) => ({
+  if (safe.program && safe.program.items && Array.isArray(safe.program.items) && safe.program.items.length > 0) {
+    normalized.program.items = safe.program.items.map((item) => ({
+      icon: typeof item?.icon === 'string' ? item.icon : 'kajian-pagi',
+      title: typeof item?.title === 'string' ? item.title : '',
+      desc: typeof item?.desc === 'string' ? item.desc : '',
+      tag: typeof item?.tag === 'string' ? item.tag : ''
+    }));
+  } else if (safe.programs && Array.isArray(safe.programs) && safe.programs.length > 0) {
+    normalized.program.items = safe.programs.map((item) => ({
       icon: typeof item?.icon === 'string' ? item.icon : 'kajian-pagi',
       title: typeof item?.title === 'string' ? item.title : '',
       desc: typeof item?.desc === 'string' ? item.desc : '',
       tag: typeof item?.tag === 'string' ? item.tag : ''
     }));
   } else {
-    normalized.programs = cloneDefaultPrograms();
+    normalized.program.items = cloneDefaultPrograms();
   }
 
-  if (Array.isArray(safe.schedules) && safe.schedules.length > 0) {
-    normalized.schedules = safe.schedules.map((item) => ({
+  if (safe.schedule && safe.schedule.items && Array.isArray(safe.schedule.items) && safe.schedule.items.length > 0) {
+    normalized.schedule.items = safe.schedule.items.map((item) => ({
+      day: typeof item?.day === 'string' ? item.day : '',
+      month: typeof item?.month === 'string' ? item.month : '',
+      title: typeof item?.title === 'string' ? item.title : '',
+      detail: typeof item?.detail === 'string' ? item.detail : '',
+      time: typeof item?.time === 'string' ? item.time : ''
+    }));
+  } else if (safe.schedules && Array.isArray(safe.schedules) && safe.schedules.length > 0) {
+    normalized.schedule.items = safe.schedules.map((item) => ({
       day: typeof item?.day === 'string' ? item.day : '',
       month: typeof item?.month === 'string' ? item.month : '',
       title: typeof item?.title === 'string' ? item.title : '',
@@ -276,7 +374,17 @@ function normalizeContent(raw) {
       time: typeof item?.time === 'string' ? item.time : ''
     }));
   } else {
-    normalized.schedules = cloneDefaultSchedules();
+    normalized.schedule.items = cloneDefaultSchedules();
+  }
+
+  if (safe.fasilitas && safe.fasilitas.items && Array.isArray(safe.fasilitas.items) && safe.fasilitas.items.length > 0) {
+    normalized.fasilitas.items = safe.fasilitas.items.map((item) => ({
+      icon: typeof item?.icon === 'string' ? item.icon : 'masjid',
+      title: typeof item?.title === 'string' ? item.title : '',
+      desc: typeof item?.desc === 'string' ? item.desc : ''
+    }));
+  } else {
+    normalized.fasilitas.items = cloneDefaultFasilitas();
   }
 
   return normalized;
@@ -297,7 +405,7 @@ function updateImagePreview(imageElement, url) {
 function renderVideosRepeater() {
   videosRepeater.innerHTML = '';
 
-  state.videos.forEach((video, index) => {
+  state.videosItems.forEach((video, index) => {
     const node = videoItemTemplate.content.firstElementChild.cloneNode(true);
     node.querySelector('[data-role="index"]').textContent = String(index + 1);
 
@@ -314,53 +422,51 @@ function renderVideosRepeater() {
     titleInput.value = video.title;
     metaInput.value = video.meta;
 
-    // Auto-generate YT thumbnail if image is missing on load
     let resolvedImage = video.image;
     if (!resolvedImage.trim()) {
       const ytMatch = video.url.match(/(?:v=|\/vi\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
       if (ytMatch) {
         resolvedImage = `https://img.youtube.com/vi/${ytMatch[1]}/maxresdefault.jpg`;
-        state.videos[index].image = resolvedImage;
+        state.videosItems[index].image = resolvedImage;
       }
     }
     imageInput.value = resolvedImage;
     updateImagePreview(previewImage, resolvedImage);
 
     moveUpBtn.disabled = index === 0;
-    moveDownBtn.disabled = index === state.videos.length - 1;
+    moveDownBtn.disabled = index === state.videosItems.length - 1;
 
     urlInput.addEventListener('input', () => {
-      state.videos[index].url = urlInput.value;
-      // Always auto-fill thumbnail from YouTube URL
+      state.videosItems[index].url = urlInput.value;
       const ytMatch = urlInput.value.match(/(?:v=|\/vi\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
       if (ytMatch) {
         const thumb = `https://img.youtube.com/vi/${ytMatch[1]}/maxresdefault.jpg`;
-        state.videos[index].image = thumb;
+        state.videosItems[index].image = thumb;
         imageInput.value = thumb;
         updateImagePreview(previewImage, thumb);
       }
     });
     imageInput.addEventListener('input', () => {
-      state.videos[index].image = imageInput.value;
+      state.videosItems[index].image = imageInput.value;
       updateImagePreview(previewImage, imageInput.value);
     });
-    titleInput.addEventListener('input', () => { state.videos[index].title = titleInput.value; });
-    metaInput.addEventListener('input', () => { state.videos[index].meta = metaInput.value; });
+    titleInput.addEventListener('input', () => { state.videosItems[index].title = titleInput.value; });
+    metaInput.addEventListener('input', () => { state.videosItems[index].meta = metaInput.value; });
 
     removeBtn.addEventListener('click', () => {
-      state.videos.splice(index, 1);
+      state.videosItems.splice(index, 1);
       renderVideosRepeater();
     });
 
     moveUpBtn.addEventListener('click', () => {
       if (index === 0) return;
-      [state.videos[index - 1], state.videos[index]] = [state.videos[index], state.videos[index - 1]];
+      [state.videosItems[index - 1], state.videosItems[index]] = [state.videosItems[index], state.videosItems[index - 1]];
       renderVideosRepeater();
     });
 
     moveDownBtn.addEventListener('click', () => {
-      if (index === state.videos.length - 1) return;
-      [state.videos[index + 1], state.videos[index]] = [state.videos[index], state.videos[index + 1]];
+      if (index === state.videosItems.length - 1) return;
+      [state.videosItems[index + 1], state.videosItems[index]] = [state.videosItems[index], state.videosItems[index + 1]];
       renderVideosRepeater();
     });
 
@@ -539,7 +645,7 @@ function renderSchedulesRepeater() {
   if (!container) return;
   container.innerHTML = '';
 
-  state.schedules.forEach((item, index) => {
+  state.scheduleItems.forEach((item, index) => {
     const node = document.getElementById('scheduleItemTemplate').content.firstElementChild.cloneNode(true);
     node.querySelector('[data-role="index"]').textContent = String(index + 1);
 
@@ -559,28 +665,28 @@ function renderSchedulesRepeater() {
     timeInput.value = item.time;
 
     moveUpBtn.disabled = index === 0;
-    moveDownBtn.disabled = index === state.schedules.length - 1;
+    moveDownBtn.disabled = index === state.scheduleItems.length - 1;
 
-    dayInput.addEventListener('input', () => { state.schedules[index].day = dayInput.value; });
-    monthInput.addEventListener('input', () => { state.schedules[index].month = monthInput.value; });
-    titleInput.addEventListener('input', () => { state.schedules[index].title = titleInput.value; });
-    detailInput.addEventListener('input', () => { state.schedules[index].detail = detailInput.value; });
-    timeInput.addEventListener('input', () => { state.schedules[index].time = timeInput.value; });
+    dayInput.addEventListener('input', () => { state.scheduleItems[index].day = dayInput.value; });
+    monthInput.addEventListener('input', () => { state.scheduleItems[index].month = monthInput.value; });
+    titleInput.addEventListener('input', () => { state.scheduleItems[index].title = titleInput.value; });
+    detailInput.addEventListener('input', () => { state.scheduleItems[index].detail = detailInput.value; });
+    timeInput.addEventListener('input', () => { state.scheduleItems[index].time = timeInput.value; });
 
     removeBtn.addEventListener('click', () => {
-      state.schedules.splice(index, 1);
+      state.scheduleItems.splice(index, 1);
       renderSchedulesRepeater();
     });
 
     moveUpBtn.addEventListener('click', () => {
       if (index === 0) return;
-      [state.schedules[index - 1], state.schedules[index]] = [state.schedules[index], state.schedules[index - 1]];
+      [state.scheduleItems[index - 1], state.scheduleItems[index]] = [state.scheduleItems[index], state.scheduleItems[index - 1]];
       renderSchedulesRepeater();
     });
 
     moveDownBtn.addEventListener('click', () => {
-      if (index === state.schedules.length - 1) return;
-      [state.schedules[index + 1], state.schedules[index]] = [state.schedules[index], state.schedules[index + 1]];
+      if (index === state.scheduleItems.length - 1) return;
+      [state.scheduleItems[index + 1], state.scheduleItems[index]] = [state.scheduleItems[index], state.scheduleItems[index + 1]];
       renderSchedulesRepeater();
     });
 
@@ -593,7 +699,7 @@ function renderProgramsRepeater() {
   if (!container) return;
   container.innerHTML = '';
 
-  state.programs.forEach((item, index) => {
+  state.programItems.forEach((item, index) => {
     const node = document.getElementById('programItemTemplate').content.firstElementChild.cloneNode(true);
     node.querySelector('[data-role="index"]').textContent = String(index + 1);
 
@@ -611,27 +717,27 @@ function renderProgramsRepeater() {
     tagInput.value = item.tag;
 
     moveUpBtn.disabled = index === 0;
-    moveDownBtn.disabled = index === state.programs.length - 1;
+    moveDownBtn.disabled = index === state.programItems.length - 1;
 
-    iconSelect.addEventListener('change', () => { state.programs[index].icon = iconSelect.value; });
-    titleInput.addEventListener('input', () => { state.programs[index].title = titleInput.value; });
-    descInput.addEventListener('input', () => { state.programs[index].desc = descInput.value; });
-    tagInput.addEventListener('input', () => { state.programs[index].tag = tagInput.value; });
+    iconSelect.addEventListener('change', () => { state.programItems[index].icon = iconSelect.value; });
+    titleInput.addEventListener('input', () => { state.programItems[index].title = titleInput.value; });
+    descInput.addEventListener('input', () => { state.programItems[index].desc = descInput.value; });
+    tagInput.addEventListener('input', () => { state.programItems[index].tag = tagInput.value; });
 
     removeBtn.addEventListener('click', () => {
-      state.programs.splice(index, 1);
+      state.programItems.splice(index, 1);
       renderProgramsRepeater();
     });
 
     moveUpBtn.addEventListener('click', () => {
       if (index === 0) return;
-      [state.programs[index - 1], state.programs[index]] = [state.programs[index], state.programs[index - 1]];
+      [state.programItems[index - 1], state.programItems[index]] = [state.programItems[index], state.programItems[index - 1]];
       renderProgramsRepeater();
     });
 
     moveDownBtn.addEventListener('click', () => {
-      if (index === state.programs.length - 1) return;
-      [state.programs[index + 1], state.programs[index]] = [state.programs[index], state.programs[index + 1]];
+      if (index === state.programItems.length - 1) return;
+      [state.programItems[index + 1], state.programItems[index]] = [state.programItems[index], state.programItems[index + 1]];
       renderProgramsRepeater();
     });
 
@@ -639,32 +745,111 @@ function renderProgramsRepeater() {
   });
 }
 
-function fillScalarInputs(values) {
-  scalarKeys.forEach((key) => {
-    const input = form.elements.namedItem(key);
-    if (input) {
-      input.value = typeof values[key] === 'string' ? values[key] : defaultContent[key];
-    }
+function renderFasilitasRepeater() {
+  const container = document.getElementById('fasilitasRepeater');
+  if (!container) return;
+  container.innerHTML = '';
+
+  state.fasilitasItems.forEach((item, index) => {
+    const node = fasilitasItemTemplate.content.firstElementChild.cloneNode(true);
+    node.querySelector('[data-role="index"]').textContent = String(index + 1);
+
+    const iconSelect = node.querySelector('[data-field="icon"]');
+    const titleInput = node.querySelector('[data-field="title"]');
+    const descInput = node.querySelector('[data-field="desc"]');
+    const removeBtn = node.querySelector('[data-action="remove-fasilitas"]');
+    const moveUpBtn = node.querySelector('[data-action="move-fasilitas-up"]');
+    const moveDownBtn = node.querySelector('[data-action="move-fasilitas-down"]');
+
+    iconSelect.value = item.icon;
+    titleInput.value = item.title;
+    descInput.value = item.desc;
+
+    moveUpBtn.disabled = index === 0;
+    moveDownBtn.disabled = index === state.fasilitasItems.length - 1;
+
+    iconSelect.addEventListener('change', () => { state.fasilitasItems[index].icon = iconSelect.value; });
+    titleInput.addEventListener('input', () => { state.fasilitasItems[index].title = titleInput.value; });
+    descInput.addEventListener('input', () => { state.fasilitasItems[index].desc = descInput.value; });
+
+    removeBtn.addEventListener('click', () => {
+      state.fasilitasItems.splice(index, 1);
+      renderFasilitasRepeater();
+    });
+
+    moveUpBtn.addEventListener('click', () => {
+      if (index === 0) return;
+      [state.fasilitasItems[index - 1], state.fasilitasItems[index]] = [state.fasilitasItems[index], state.fasilitasItems[index - 1]];
+      renderFasilitasRepeater();
+    });
+
+    moveDownBtn.addEventListener('click', () => {
+      if (index === state.fasilitasItems.length - 1) return;
+      [state.fasilitasItems[index + 1], state.fasilitasItems[index]] = [state.fasilitasItems[index], state.fasilitasItems[index + 1]];
+      renderFasilitasRepeater();
+    });
+
+    container.appendChild(node);
   });
+}
+
+function fillScalarInputs(values) {
+  Object.keys(scalarKeys).forEach((section) => {
+    const keys = scalarKeys[section];
+    keys.forEach((key) => {
+      const input = form.elements.namedItem(`${section}_${key}`);
+      if (input && values[section] && typeof values[section] === 'object') {
+        input.value = typeof values[section][key] === 'string' ? values[section][key] : (defaultContent[section]?.[key] || '');
+      }
+    });
+  });
+
+  if (values.about && values.about.stats && Array.isArray(values.about.stats)) {
+    values.about.stats.forEach((stat, index) => {
+      const numInput = form.elements.namedItem(`about_stat${index + 1}_number`);
+      const lblInput = form.elements.namedItem(`about_stat${index + 1}_label`);
+      if (numInput) numInput.value = stat.number || '';
+      if (lblInput) lblInput.value = stat.label || '';
+    });
+  }
 }
 
 function collectScalarValues() {
   const values = {};
-  scalarKeys.forEach((key) => {
-    const input = form.elements.namedItem(key);
-    const formValue = input ? input.value : '';
-    values[key] = formValue.trim() ? formValue : defaultContent[key];
+  
+  Object.keys(scalarKeys).forEach((section) => {
+    values[section] = {};
+    const keys = scalarKeys[section];
+    keys.forEach((key) => {
+      const input = form.elements.namedItem(`${section}_${key}`);
+      const formValue = input ? input.value : '';
+      values[section][key] = formValue.trim() || (defaultContent[section]?.[key] || '');
+    });
   });
+
+  values.about = values.about || { stats: [] };
+  values.about.stats = [];
+  for (let i = 0; i < 3; i++) {
+    const numInput = form.elements.namedItem(`about_stat${i + 1}_number`);
+    const lblInput = form.elements.namedItem(`about_stat${i + 1}_label`);
+    values.about.stats.push({
+      number: numInput ? (numInput.value.trim() || defaultContent.about.stats[i].number) : defaultContent.about.stats[i].number,
+      label: lblInput ? (lblInput.value.trim() || defaultContent.about.stats[i].label) : defaultContent.about.stats[i].label
+    });
+  }
+
   return values;
 }
 
 function getRequestPayload() {
+  const scalars = collectScalarValues();
   return {
-    ...collectScalarValues(),
-    videos: state.videos,
-    galleryItems: state.galleryItems,
-    schedules: state.schedules,
-    programs: state.programs
+    ...scalars,
+    videos: { ...scalars.videos, items: state.videosItems },
+    gallery: { ...scalars.gallery, items: state.galleryItems },
+    schedule: { ...scalars.schedule, items: state.scheduleItems },
+    program: { ...scalars.program, items: state.programItems },
+    fasilitas: { ...scalars.fasilitas, items: state.fasilitasItems }
   };
 }
 
@@ -713,14 +898,16 @@ function applyContentToForm(content) {
   const normalized = normalizeContent(content);
 
   fillScalarInputs(normalized);
-  state.videos = normalized.videos;
-  state.galleryItems = normalized.galleryItems;
-  state.schedules = normalized.schedules;
-  state.programs = normalized.programs;
+  state.videosItems = normalized.videos?.items || cloneDefaultVideos();
+  state.galleryItems = normalized.gallery?.items || cloneDefaultGalleryItems();
+  state.scheduleItems = normalized.schedule?.items || cloneDefaultSchedules();
+  state.programItems = normalized.program?.items || cloneDefaultPrograms();
+  state.fasilitasItems = normalized.fasilitas?.items || cloneDefaultFasilitas();
   renderVideosRepeater();
   renderGalleryRepeater();
   renderSchedulesRepeater();
   renderProgramsRepeater();
+  renderFasilitasRepeater();
 }
 
 saveBtn.addEventListener('click', async () => {
@@ -744,13 +931,7 @@ saveBtn.addEventListener('click', async () => {
 });
 
 resetBtn.addEventListener('click', async () => {
-  const resetContent = {
-    ...defaultContent,
-    videos: cloneDefaultVideos(),
-    galleryItems: cloneDefaultGalleryItems(),
-    schedules: cloneDefaultSchedules(),
-    programs: cloneDefaultPrograms()
-  };
+  const resetContent = JSON.parse(JSON.stringify(defaultContent));
 
   try {
     await saveToApi({
@@ -769,7 +950,7 @@ resetBtn.addEventListener('click', async () => {
 });
 
 addVideoBtn.addEventListener('click', () => {
-  state.videos.push({
+  state.videosItems.push({
     url: '',
     image: '',
     title: 'Video Kajian',
@@ -789,7 +970,7 @@ addGalleryBtn.addEventListener('click', () => {
 const addProgramBtn = document.getElementById('addProgramBtn');
 if (addProgramBtn) {
   addProgramBtn.addEventListener('click', () => {
-    state.programs.push({
+    state.programItems.push({
       icon: 'kajian-pagi',
       title: '',
       desc: '',
@@ -802,7 +983,7 @@ if (addProgramBtn) {
 const addScheduleBtn = document.getElementById('addScheduleBtn');
 if (addScheduleBtn) {
   addScheduleBtn.addEventListener('click', () => {
-    state.schedules.push({
+    state.scheduleItems.push({
       day: '',
       month: '',
       title: '',
@@ -810,6 +991,17 @@ if (addScheduleBtn) {
       time: ''
     });
     renderSchedulesRepeater();
+  });
+}
+
+if (addFasilitasBtn) {
+  addFasilitasBtn.addEventListener('click', () => {
+    state.fasilitasItems.push({
+      icon: 'masjid',
+      title: '',
+      desc: ''
+    });
+    renderFasilitasRepeater();
   });
 }
 

@@ -10,35 +10,67 @@ function sanitizeString(value) {
 
 function sanitizeContent(content) {
   const normalized = {};
-  Object.entries(content || {}).forEach(([key, value]) => {
-    if (typeof value === 'string') normalized[key] = value;
+
+  const scalarSections = ['hero', 'about', 'program', 'fasilitas', 'streaming', 'videos', 'schedule', 'gallery', 'contact', 'donation', 'footer'];
+
+  const sectionScalarKeys = {
+    hero: ['title', 'sub', 'tagline'],
+    about: ['label', 'heading', 'p1', 'p2', 'p3'],
+    program: ['label', 'heading'],
+    fasilitas: ['label', 'heading'],
+    streaming: ['label', 'heading', 'desc'],
+    videos: ['label', 'heading', 'channelUrl'],
+    schedule: ['label', 'heading'],
+    gallery: ['label', 'heading'],
+    contact: ['sectionLabel', 'sectionTitle', 'locationLabel', 'address', 'mapsUrl', 'mapEmbedUrl', 'whatsappLabel', 'whatsappUrl', 'phoneHref', 'phoneText', 'instagramLabel', 'instagramUrl', 'instagramText', 'facebookLabel', 'facebookUrl', 'facebookText', 'youtubeLabel', 'youtubeUrl', 'youtubeText'],
+    donation: ['label', 'title', 'desc', 'bankName', 'bankLabel', 'bankNumber', 'bankOwner', 'whatsappUrl', 'whatsappText'],
+    footer: ['brandName', 'brandLocation', 'ayat', 'copy']
+  };
+
+  scalarSections.forEach((section) => {
+    const sectionData = content && content[section];
+    if (!sectionData || typeof sectionData !== 'object') return;
+
+    if (section === 'about' && Array.isArray(sectionData.stats)) {
+      normalized.about = normalized.about || {};
+      normalized.about.stats = sectionData.stats.map((stat) => ({
+        number: sanitizeString(stat && stat.number),
+        label: sanitizeString(stat && stat.label)
+      }));
+    }
+
+    const keys = sectionScalarKeys[section] || [];
+    keys.forEach((key) => {
+      const value = sectionData[key];
+      if (typeof value === 'string') {
+        normalized[section] = normalized[section] || {};
+        normalized[section][key] = value;
+      }
+    });
   });
 
-  if (Array.isArray(content.videos)) {
-    normalized.videos = content.videos.map((item) => ({
-      image: sanitizeString(item && item.image),
-      meta: sanitizeString(item && item.meta),
-      title: sanitizeString(item && item.title),
-      url: sanitizeString(item && item.url)
-    }));
-  }
+  const itemArrays = [
+    { key: 'videos', itemsKey: 'items', fields: ['url', 'image', 'title', 'meta'] },
+    { key: 'gallery', itemsKey: 'items', fields: ['caption', 'imageUrl'] },
+    { key: 'schedule', itemsKey: 'items', fields: ['day', 'month', 'title', 'detail', 'time'] },
+    { key: 'program', itemsKey: 'items', fields: ['icon', 'title', 'desc', 'tag'] },
+    { key: 'fasilitas', itemsKey: 'items', fields: ['icon', 'title', 'desc'] }
+  ];
 
-  if (Array.isArray(content.galleryItems)) {
-    normalized.galleryItems = content.galleryItems.map((item) => ({
-      caption: sanitizeString(item && item.caption),
-      imageUrl: sanitizeString(item && item.imageUrl)
-    }));
-  }
-
-  if (Array.isArray(content.schedules)) {
-    normalized.schedules = content.schedules.map((item) => ({
-      day: sanitizeString(item && item.day),
-      month: sanitizeString(item && item.month),
-      title: sanitizeString(item && item.title),
-      detail: sanitizeString(item && item.detail),
-      time: sanitizeString(item && item.time)
-    }));
-  }
+  itemArrays.forEach(({ key, itemsKey, fields }) => {
+    const sectionData = content && content[key];
+    const items = sectionData && sectionData[itemsKey];
+    if (Array.isArray(items)) {
+      normalized[key] = normalized[key] || {};
+      normalized[key][itemsKey] = items.map((item) => {
+        const sanitized = {};
+        fields.forEach((field) => {
+          sanitized[field] = sanitizeString(item && item[field]);
+        });
+        return sanitized;
+      });
+    }
+  });
 
   return normalized;
 }
