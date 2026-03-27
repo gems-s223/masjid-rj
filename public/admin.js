@@ -62,6 +62,45 @@ const DEFAULT_VIDEOS = [
   }
 ];
 
+const DEFAULT_PROGRAMS = [
+  {
+    icon: 'kajian-pagi',
+    title: 'Kajian Ahad Pagi',
+    desc: 'Kajian rutin setiap Ahad pagi mengkaji kitab-kitab para ulama dengan metode talaqqi yang sistematis dan mudah dipahami seluruh kalangan.',
+    tag: "Ahad · 10:00 WIB"
+  },
+  {
+    icon: 'streaming',
+    title: 'Live Streaming',
+    desc: 'Saksikan kajian ilmu dari mana saja melalui siaran langsung di YouTube dan Facebook. Ilmu tanpa batas, tidak terikat tempat maupun waktu.',
+    tag: 'YouTube · Facebook'
+  },
+  {
+    icon: 'anak',
+    title: 'Kegiatan Anak',
+    desc: "Program khusus anak-anak: tahsin Al-Qur'an, hafalan surat pendek, dan pendidikan akhlak Islami yang menyenangkan dan penuh semangat.",
+    tag: 'Weekend Program'
+  },
+  {
+    icon: 'kajian-malam',
+    title: 'Kajian Malam',
+    desc: 'Kajian tematik malam hari membahas fiqih, tauhid, dan sirah nabawiyah. Ilmu yang menemani malam-malam penuh keberkahan.',
+    tag: "Rabu · Ba'da Isya'"
+  },
+  {
+    icon: 'sholat',
+    title: 'Sholat Berjamaah',
+    desc: 'Fasilitas lengkap untuk sholat berjamaah lima waktu. Mari ramaikan shaf masjid dan rasakan keindahan ukhuwah Islamiyah.',
+    tag: '5 Waktu Sholat'
+  },
+  {
+    icon: 'zakat',
+    title: 'Zakat & Infaq',
+    desc: 'Layanan zakat, infaq, dan sedekah yang amanah untuk membantu saudara muslim yang membutuhkan di sekitar Karanganyar, Kebumen.',
+    tag: 'LAZIS Raudhatul Jannah'
+  }
+];
+
 const DEFAULT_GALLERY_ITEMS = [
   { caption: 'Sholat Berjamaah', imageUrl: '' },
   { caption: 'Kajian Rutin Ahad Pagi', imageUrl: '' },
@@ -71,6 +110,8 @@ const DEFAULT_GALLERY_ITEMS = [
 ];
 
 const defaultContent = {
+  programsLabel: 'Program Kami',
+  programsHeading: 'Kegiatan &amp; Program Unggulan',
   stat1Number: '5+',
   stat1Label: 'Tahun Berdiri',
   stat2Number: '20+',
@@ -141,7 +182,8 @@ const galleryItemTemplate = document.getElementById('galleryItemTemplate');
 const state = {
   videos: [],
   galleryItems: [],
-  schedules: []
+  schedules: [],
+  programs: []
 };
 
 function showStatus(message) {
@@ -150,6 +192,10 @@ function showStatus(message) {
 
 function cloneDefaultVideos() {
   return DEFAULT_VIDEOS.map((item) => ({ ...item }));
+}
+
+function cloneDefaultPrograms() {
+  return DEFAULT_PROGRAMS.map((item) => ({ ...item }));
 }
 
 function cloneDefaultGalleryItems() {
@@ -208,6 +254,17 @@ function normalizeContent(raw) {
       caption: typeof safe[`galleryCap${index + 1}`] === 'string' ? safe[`galleryCap${index + 1}`] : item.caption,
       imageUrl: typeof safe[`galleryImage${index + 1}`] === 'string' ? safe[`galleryImage${index + 1}`] : item.imageUrl
     }));
+  }
+
+  if (Array.isArray(safe.programs) && safe.programs.length > 0) {
+    normalized.programs = safe.programs.map((item) => ({
+      icon: typeof item?.icon === 'string' ? item.icon : 'kajian-pagi',
+      title: typeof item?.title === 'string' ? item.title : '',
+      desc: typeof item?.desc === 'string' ? item.desc : '',
+      tag: typeof item?.tag === 'string' ? item.tag : ''
+    }));
+  } else {
+    normalized.programs = cloneDefaultPrograms();
   }
 
   if (Array.isArray(safe.schedules) && safe.schedules.length > 0) {
@@ -531,6 +588,57 @@ function renderSchedulesRepeater() {
   });
 }
 
+function renderProgramsRepeater() {
+  const container = document.getElementById('programsRepeater');
+  if (!container) return;
+  container.innerHTML = '';
+
+  state.programs.forEach((item, index) => {
+    const node = document.getElementById('programItemTemplate').content.firstElementChild.cloneNode(true);
+    node.querySelector('[data-role="index"]').textContent = String(index + 1);
+
+    const iconSelect = node.querySelector('[data-field="icon"]');
+    const titleInput = node.querySelector('[data-field="title"]');
+    const descInput = node.querySelector('[data-field="desc"]');
+    const tagInput = node.querySelector('[data-field="tag"]');
+    const removeBtn = node.querySelector('[data-action="remove-program"]');
+    const moveUpBtn = node.querySelector('[data-action="move-program-up"]');
+    const moveDownBtn = node.querySelector('[data-action="move-program-down"]');
+
+    iconSelect.value = item.icon;
+    titleInput.value = item.title;
+    descInput.value = item.desc;
+    tagInput.value = item.tag;
+
+    moveUpBtn.disabled = index === 0;
+    moveDownBtn.disabled = index === state.programs.length - 1;
+
+    iconSelect.addEventListener('change', () => { state.programs[index].icon = iconSelect.value; });
+    titleInput.addEventListener('input', () => { state.programs[index].title = titleInput.value; });
+    descInput.addEventListener('input', () => { state.programs[index].desc = descInput.value; });
+    tagInput.addEventListener('input', () => { state.programs[index].tag = tagInput.value; });
+
+    removeBtn.addEventListener('click', () => {
+      state.programs.splice(index, 1);
+      renderProgramsRepeater();
+    });
+
+    moveUpBtn.addEventListener('click', () => {
+      if (index === 0) return;
+      [state.programs[index - 1], state.programs[index]] = [state.programs[index], state.programs[index - 1]];
+      renderProgramsRepeater();
+    });
+
+    moveDownBtn.addEventListener('click', () => {
+      if (index === state.programs.length - 1) return;
+      [state.programs[index + 1], state.programs[index]] = [state.programs[index], state.programs[index + 1]];
+      renderProgramsRepeater();
+    });
+
+    container.appendChild(node);
+  });
+}
+
 function fillScalarInputs(values) {
   scalarKeys.forEach((key) => {
     const input = form.elements.namedItem(key);
@@ -555,7 +663,8 @@ function getRequestPayload() {
     ...collectScalarValues(),
     videos: state.videos,
     galleryItems: state.galleryItems,
-    schedules: state.schedules
+    schedules: state.schedules,
+    programs: state.programs
   };
 }
 
@@ -607,9 +716,11 @@ function applyContentToForm(content) {
   state.videos = normalized.videos;
   state.galleryItems = normalized.galleryItems;
   state.schedules = normalized.schedules;
+  state.programs = normalized.programs;
   renderVideosRepeater();
   renderGalleryRepeater();
   renderSchedulesRepeater();
+  renderProgramsRepeater();
 }
 
 saveBtn.addEventListener('click', async () => {
@@ -637,7 +748,8 @@ resetBtn.addEventListener('click', async () => {
     ...defaultContent,
     videos: cloneDefaultVideos(),
     galleryItems: cloneDefaultGalleryItems(),
-    schedules: cloneDefaultSchedules()
+    schedules: cloneDefaultSchedules(),
+    programs: cloneDefaultPrograms()
   };
 
   try {
@@ -673,6 +785,19 @@ addGalleryBtn.addEventListener('click', () => {
   });
   renderGalleryRepeater();
 });
+
+const addProgramBtn = document.getElementById('addProgramBtn');
+if (addProgramBtn) {
+  addProgramBtn.addEventListener('click', () => {
+    state.programs.push({
+      icon: 'kajian-pagi',
+      title: '',
+      desc: '',
+      tag: ''
+    });
+    renderProgramsRepeater();
+  });
+}
 
 const addScheduleBtn = document.getElementById('addScheduleBtn');
 if (addScheduleBtn) {

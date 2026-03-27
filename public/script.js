@@ -36,6 +36,24 @@
     { caption: 'Live Streaming', imageUrl: '' }
   ];
 
+  const DEFAULT_PROGRAMS = [
+    { icon: 'kajian-pagi', title: 'Kajian Ahad Pagi', desc: 'Kajian rutin setiap Ahad pagi mengkaji kitab-kitab para ulama dengan metode talaqqi yang sistematis dan mudah dipahami seluruh kalangan.', tag: "Ahad · 10:00 WIB" },
+    { icon: 'streaming', title: 'Live Streaming', desc: 'Saksikan kajian ilmu dari mana saja melalui siaran langsung di YouTube dan Facebook. Ilmu tanpa batas, tidak terikat tempat maupun waktu.', tag: 'YouTube · Facebook' },
+    { icon: 'anak', title: 'Kegiatan Anak', desc: "Program khusus anak-anak: tahsin Al-Qur'an, hafalan surat pendek, dan pendidikan akhlak Islami yang menyenangkan dan penuh semangat.", tag: 'Weekend Program' },
+    { icon: 'kajian-malam', title: 'Kajian Malam', desc: 'Kajian tematik malam hari membahas fiqih, tauhid, dan sirah nabawiyah. Ilmu yang menemani malam-malam penuh keberkahan.', tag: "Rabu · Ba'da Isya'" },
+    { icon: 'sholat', title: 'Sholat Berjamaah', desc: 'Fasilitas lengkap untuk sholat berjamaah lima waktu. Mari ramaikan shaf masjid dan rasakan keindahan ukhuwah Islamiyah.', tag: '5 Waktu Sholat' },
+    { icon: 'zakat', title: 'Zakat & Infaq', desc: 'Layanan zakat, infaq, dan sedekah yang amanah untuk membantu saudara muslim yang membutuhkan di sekitar Karanganyar, Kebumen.', tag: 'LAZIS Raudhatul Jannah' }
+  ];
+
+  const PROGRAM_ICONS = {
+    'kajian-pagi': '<circle cx="24" cy="24" r="20"/><path d="M24 14v10l6 4"/><path d="M16 10 Q24 6 32 10"/>',
+    'streaming': '<rect x="4" y="8" width="40" height="28" rx="3"/><circle cx="24" cy="22" r="6"/><circle cx="24" cy="22" r="2" fill="currentColor" stroke="none"/><path d="M12 36v6 M36 36v6"/>',
+    'anak': '<circle cx="18" cy="16" r="7"/><circle cx="30" cy="16" r="7"/><path d="M4 40c0-7 6-12 14-12"/><path d="M44 40c0-7-6-12-14-12"/><path d="M18 28 Q24 34 30 28"/>',
+    'kajian-malam': '<path d="M6 18L6 40 42 40 42 18 24 6Z"/><rect x="16" y="26" width="16" height="14" rx="1"/><path d="M20 20 Q24 16 28 20"/>',
+    'sholat': '<path d="M10 38V16 Q24 8 38 16 L38 38"/><path d="M18 38V28H30V38"/><path d="M22 28V22 Q24 19 26 22 V28"/><line x1="6" y1="38" x2="42" y2="38"/>',
+    'zakat': '<path d="M24 6 C16 6 8 12 8 22 C8 32 16 42 24 42 C32 42 40 32 40 22 C40 12 32 6 24 6Z"/><path d="M16 22 Q20 18 24 22 Q28 26 32 22"/><circle cx="24" cy="22" r="3"/>'
+  };
+
   function escapeHtml(value) {
     return String(value)
       .replace(/&/g, '&amp;')
@@ -175,6 +193,36 @@
     }).join('');
   }
 
+  function renderPrograms(content) {
+    const grid = document.getElementById('programsGrid');
+    if (!grid) return;
+
+    const programs = (Array.isArray(content && content.programs) && content.programs.length > 0)
+      ? content.programs
+      : DEFAULT_PROGRAMS;
+
+    const delays = [0, 0.1, 0.2, 0.05, 0.15, 0.25];
+    grid.innerHTML = programs.map((item, index) => {
+      const icon = item.icon && PROGRAM_ICONS[item.icon] ? item.icon : 'kajian-pagi';
+      const svgPaths = PROGRAM_ICONS[icon];
+      const title = escapeHtml(item.title || '');
+      const desc = escapeHtml(item.desc || '');
+      const tag = escapeHtml(item.tag || '');
+      const delay = delays[index % delays.length];
+      const delayAttr = delay > 0 ? ` style="transition-delay:${delay}s"` : '';
+
+      return `
+      <div class="prog-card reveal"${delayAttr}>
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${svgPaths}</svg>
+        <h3 class="prog-title">${title}</h3>
+        <p class="prog-desc">${desc}</p>
+        <span class="prog-tag">${tag}</span>
+      </div>`;
+    }).join('');
+
+    grid.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  }
+
   function applyContent(content) {
     Object.entries(content || {}).forEach(([key, value]) => {
       if (typeof value !== 'string') return;
@@ -204,6 +252,7 @@
     renderVideos(content || {});
     renderGallery(content || {});
     renderSchedules(content);
+    renderPrograms(content);
   }
 
   function applyLiveBadge(isLive) {
@@ -227,13 +276,25 @@
       localStorage.setItem(CONTENT_STORAGE_KEY, JSON.stringify(payload.content || {}));
       localStorage.setItem(LIVE_STORAGE_KEY, String(Boolean(payload.isLive)));
     } catch (error) {
-      console.warn('API unavailable, using local fallback.', error);
+      console.warn('API unavailable, trying local JSON fallback.', error);
 
       let saved = {};
       try {
         saved = JSON.parse(localStorage.getItem(CONTENT_STORAGE_KEY) || '{}');
       } catch (parseError) {
-        console.error('Invalid local fallback content.', parseError);
+        console.error('Invalid localStorage fallback content.', parseError);
+      }
+
+      if (Object.keys(saved).length === 0) {
+        try {
+          const jsonRes = await fetch('/data/content.json');
+          if (jsonRes.ok) {
+            const jsonData = await jsonRes.json();
+            saved = jsonData.content || {};
+          }
+        } catch (jsonError) {
+          console.error('Local JSON fallback also failed.', jsonError);
+        }
       }
 
       applyContent(saved);

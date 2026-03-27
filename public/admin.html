@@ -17,8 +17,22 @@
       <p class="lead">Perubahan disimpan ke server lokal proyek ini sehingga dipakai bersama oleh seluruh pengguna yang membuka website dari server yang sama.</p>
     </header>
 
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" role="tab" data-tab="hero">Hero</button>
+      <button class="tab-btn" role="tab" data-tab="about">About</button>
+      <button class="tab-btn" role="tab" data-tab="program">Program</button>
+      <button class="tab-btn" role="tab" data-tab="schedule">Schedule</button>
+      <button class="tab-btn" role="tab" data-tab="streaming">Streaming</button>
+      <button class="tab-btn" role="tab" data-tab="videos">Videos</button>
+      <button class="tab-btn" role="tab" data-tab="gallery">Gallery</button>
+      <button class="tab-btn" role="tab" data-tab="contact">Contact</button>
+      <button class="tab-btn" role="tab" data-tab="donation">Donation</button>
+      <button class="tab-btn" role="tab" data-tab="footer">Footer</button>
+    </nav>
+
     <form id="adminForm" class="stacked-form">
-      <section class="panel panel-section">
+
+      <section class="panel panel-section tab-panel active" data-panel="hero">
         <div class="panel-head">
           <h2>Hero Section</h2>
         </div>
@@ -42,7 +56,7 @@
         </div>
       </section>
 
-      <section class="panel panel-section">
+      <section class="panel panel-section tab-panel" data-panel="about">
         <div class="panel-head">
           <h2>About Section</h2>
         </div>
@@ -90,7 +104,27 @@
         </div>
       </section>
 
-      <section class="panel panel-section">
+      <section class="panel panel-section tab-panel" data-panel="program">
+        <div class="panel-head">
+          <h2>Program Section</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            Label Section Program
+            <input name="programsLabel" type="text" value="Program Kami">
+          </label>
+          <label>
+            Judul Section Program (boleh HTML)
+            <textarea name="programsHeading" rows="2"></textarea>
+          </label>
+        </div>
+        <div class="repeater-actions">
+          <button id="addProgramBtn" class="btn ghost" type="button">Tambah Program</button>
+        </div>
+        <div id="programsRepeater" class="repeater-list"></div>
+      </section>
+
+      <section class="panel panel-section tab-panel" data-panel="streaming">
         <div class="panel-head">
           <h2>Streaming Section</h2>
         </div>
@@ -102,7 +136,7 @@
         </div>
       </section>
 
-      <section class="panel panel-section">
+      <section class="panel panel-section tab-panel" data-panel="videos">
         <div class="panel-head">
           <h2>Videos Section</h2>
         </div>
@@ -122,7 +156,7 @@
         <div id="videosRepeater" class="repeater-list"></div>
       </section>
 
-      <section class="panel panel-section">
+      <section class="panel panel-section tab-panel" data-panel="schedule">
         <div class="panel-head">
           <h2>Schedule Section</h2>
         </div>
@@ -138,7 +172,7 @@
         <div id="schedulesRepeater" class="repeater-list"></div>
       </section>
 
-      <section class="panel panel-section">
+      <section class="panel panel-section tab-panel" data-panel="gallery">
         <div class="panel-head">
           <h2>Gallery Section</h2>
         </div>
@@ -154,7 +188,7 @@
         <div id="galleryRepeater" class="repeater-list"></div>
       </section>
 
-      <section class="panel panel-section">
+      <section class="panel panel-section tab-panel" data-panel="contact">
         <div class="panel-head">
           <h2>Contact Section</h2>
         </div>
@@ -226,7 +260,7 @@
         </div>
       </section>
 
-      <section class="panel panel-section">
+      <section class="panel panel-section tab-panel" data-panel="donation">
         <div class="panel-head">
           <h2>Donation Section</h2>
         </div>
@@ -270,7 +304,7 @@
         </div>
       </section>
 
-      <section class="panel panel-section">
+      <section class="panel panel-section tab-panel" data-panel="footer">
         <div class="panel-head">
           <h2>Footer Section</h2>
         </div>
@@ -293,6 +327,7 @@
           </label>
         </div>
       </section>
+
     </form>
 
     <section class="actions">
@@ -304,6 +339,44 @@
       <p id="statusText" class="status" aria-live="polite"></p>
     </section>
   </main>
+
+  <template id="programItemTemplate">
+    <article class="repeater-card" data-role="program-item">
+      <div class="repeater-card-head">
+        <h3>Program <span data-role="index"></span></h3>
+        <div class="repeater-card-actions">
+          <button class="btn sm" type="button" data-action="move-program-up" title="Geser ke atas">&#9650;</button>
+          <button class="btn sm" type="button" data-action="move-program-down" title="Geser ke bawah">&#9660;</button>
+          <button class="btn danger" type="button" data-action="remove-program">Hapus</button>
+        </div>
+      </div>
+      <div class="form-grid">
+        <label>
+          Ikon
+          <select data-field="icon">
+            <option value="kajian-pagi">Kajian Pagi (Jam)</option>
+            <option value="streaming">Streaming (TV)</option>
+            <option value="anak">Kegiatan Anak (Orang)</option>
+            <option value="kajian-malam">Kajian Malam (Rumah)</option>
+            <option value="sholat">Sholat Berjamaah (Masjid)</option>
+            <option value="zakat">Zakat &amp; Infaq (Globe)</option>
+          </select>
+        </label>
+        <label>
+          Judul Program
+          <input type="text" data-field="title">
+        </label>
+        <label>
+          Deskripsi
+          <textarea data-field="desc" rows="3"></textarea>
+        </label>
+        <label>
+          Tag
+          <input type="text" data-field="tag" placeholder="Ahad · 10:00 WIB">
+        </label>
+      </div>
+    </article>
+  </template>
 
   <template id="videoItemTemplate">
     <article class="repeater-card" data-role="video-item">
@@ -405,7 +478,16 @@
   </template>
 
   <script src="admin.js"></script>
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
-
-

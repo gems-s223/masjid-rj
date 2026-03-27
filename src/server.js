@@ -238,6 +238,15 @@ function sanitizeContent(content) {
     }));
   }
 
+  if (Array.isArray(content.programs)) {
+    normalized.programs = content.programs.map((item) => ({
+      icon: sanitizeString(item && item.icon),
+      title: sanitizeString(item && item.title),
+      desc: sanitizeString(item && item.desc),
+      tag: sanitizeString(item && item.tag)
+    }));
+  }
+
   return normalized;
 }
 

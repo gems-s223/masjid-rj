@@ -1,5 +1,7 @@
 {
   "content": {
+    "programsLabel": "Program Kami",
+    "programsHeading": "Kegiatan &amp; Program Unggulan",
     "stat1Number": "5+",
     "stat1Label": "Tahun Berdiri",
     "stat2Number": "20+",
@@ -126,6 +128,44 @@
         "title": "Tahsin Al-Quran",
         "detail": "Pembelajaran Tajwid &amp; Makhraj Huruf<br>Terbuka untuk umum, ikhwan &amp; akhwat",
         "time": "Ba'da Ashar - 16:30 WIB"
+      }
+    ],
+    "programs": [
+      {
+        "icon": "kajian-pagi",
+        "title": "Kajian Ahad Pagi",
+        "desc": "Kajian rutin setiap Ahad pagi mengkaji kitab-kitab para ulama dengan metode talaqqi yang sistematis dan mudah dipahami seluruh kalangan.",
+        "tag": "Ahad · 10:00 WIB"
+      },
+      {
+        "icon": "streaming",
+        "title": "Live Streaming",
+        "desc": "Saksikan kajian ilmu dari mana saja melalui siaran langsung di YouTube dan Facebook. Ilmu tanpa batas, tidak terikat tempat maupun waktu.",
+        "tag": "YouTube · Facebook"
+      },
+      {
+        "icon": "anak",
+        "title": "Kegiatan Anak",
+        "desc": "Program khusus anak-anak: tahsin Al-Qur'an, hafalan surat pendek, dan pendidikan akhlak Islami yang menyenangkan dan penuh semangat.",
+        "tag": "Weekend Program"
+      },
+      {
+        "icon": "kajian-malam",
+        "title": "Kajian Malam",
+        "desc": "Kajian tematik malam hari membahas fiqih, tauhid, dan sirah nabawiyah. Ilmu yang menemani malam-malam penuh keberkahan.",
+        "tag": "Rabu · Ba'da Isya'"
+      },
+      {
+        "icon": "sholat",
+        "title": "Sholat Berjamaah",
+        "desc": "Fasilitas lengkap untuk sholat berjamaah lima waktu. Mari ramaikan shaf masjid dan rasakan keindahan ukhuwah Islamiyah.",
+        "tag": "5 Waktu Sholat"
+      },
+      {
+        "icon": "zakat",
+        "title": "Zakat, Infaq & Shadaqah",
+        "desc": "Layanan zakat, infaq, dan sedekah yang amanah untuk membantu saudara muslim yang membutuhkan di sekitar Karanganyar, Kebumen.",
+        "tag": "LAZIS Raudhatul Jannah"
       }
     ]
   },
