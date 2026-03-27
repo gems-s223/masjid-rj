@@ -40,6 +40,12 @@ const DEFAULT_GALLERY_ITEMS = [
 ];
 
 const defaultContent = {
+  stat1Number: '5+',
+  stat1Label: 'Tahun Berdiri',
+  stat2Number: '20+',
+  stat2Label: 'Program/Tahun',
+  stat3Number: '3K+',
+  stat3Label: "Jama'ah",
   heroTitle: 'Masjid<br><em>Raudhatul</em> Jannah',
   heroSub: 'Taman Surga di Bumi Karanganyar',
   heroTagline: 'Rumah Ibadah <span>&middot;</span> Pusat Ilmu <span>&middot;</span> Cahaya Umat',
@@ -435,7 +441,8 @@ function collectScalarValues() {
   const values = {};
   scalarKeys.forEach((key) => {
     const input = form.elements.namedItem(key);
-    values[key] = input ? input.value : defaultContent[key];
+    const formValue = input ? input.value : '';
+    values[key] = formValue.trim() ? formValue : defaultContent[key];
   });
   return values;
 }

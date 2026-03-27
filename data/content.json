@@ -1,5 +1,11 @@
 {
   "content": {
+    "stat1Number": "5+",
+    "stat1Label": "Tahun Berdiri",
+    "stat2Number": "20+",
+    "stat2Label": "Program/Tahun",
+    "stat3Number": "2K+",
+    "stat3Label": "Jama'ah",
     "heroTitle": "Masjid<br><em>Raudhatul</em> Jannah",
     "heroSub": "Taman Surga di Bumi Karanganyar",
     "heroTagline": "Rumah Ibadah <span>&middot;</span> Pusat Ilmu <span>&middot;</span> Cahaya Umat",
@@ -8,7 +14,7 @@
     "aboutP2": "Kami berkomitmen untuk menghadirkan kajian ilmu yang bersumber dari Al-Quran dan As-Sunnah sesuai pemahaman Salafus Shalih, serta melayani kebutuhan ibadah dan pendidikan masyarakat sekitar.",
     "aboutP3": "Dengan program kajian rutin, live streaming, dan kegiatan untuk seluruh kalangan - anak, remaja, hingga dewasa - Raudhatul Jannah hadir sebagai rumah bagi setiap muslim yang ingin menuntut ilmu dan mendekatkan diri kepada Allah.",
     "streamingDesc": "Kajian-kajian di Masjid Raudhatul Jannah dapat Anda saksikan secara langsung maupun replay melalui channel YouTube dan Facebook kami. Ilmu Islam tidak mengenal jarak maupun waktu.",
-    "videosHeading": "Video Kajian & Kegiatan Masjid",
+    "videosHeading": "Kajian di YouTube",
     "videosChannelUrl": "https://www.youtube.com/@RaudhatulJannahOfficial",
     "galleryHeading": "Momen &amp; Kegiatan Masjid",
     "contactSectionLabel": "Hubungi Kami",
@@ -42,7 +48,7 @@
     "footerBrandName": "Masjid Raudhatul Jannah",
     "footerBrandLocation": "Karanganyar - Kebumen",
     "footerAyat": "\"Dan sesungguhnya masjid-masjid itu adalah untuk Allah, maka janganlah kamu menyembah seseorang pun di dalamnya beserta Allah.\" <br>- QS. Al-Jin: 18",
-    "footerCopy": "(c) 2026 Masjid Raudhatul Jannah - Karanganyar, Kebumen. Hak cipta dilindungi.",
+    "footerCopy": "(c) 2024 Masjid Raudhatul Jannah - Karanganyar, Kebumen. Hak cipta dilindungi.",
     "videos": [
       {
         "image": "https://img.youtube.com/vi/Q_9Nt_tNuaY/maxresdefault.jpg",
@@ -65,40 +71,30 @@
       {
         "image": "https://img.youtube.com/vi/44X5RHUQppI/maxresdefault.jpg",
         "meta": "Raudhatul Jannah Official",
-        "title": "Pelaksanaan Shalat Ied",
+        "title": "Video Kajian Terbaru",
         "url": "https://www.youtube.com/watch?v=44X5RHUQppI"
-      },
-      {
-        "image": "https://img.youtube.com/vi/W2DscB6pvoY/maxresdefault.jpg",
-        "meta": "Raudhatul Jannah Official",
-        "title": "Pelaksanaan Shalat Ied",
-        "url": "https://www.youtube.com/shorts/W2DscB6pvoY"
       }
     ],
     "galleryItems": [
       {
         "caption": "Sholat Berjamaah",
-        "imageUrl": "/media/whatsapp-image-2025-12-01-at-13.42.17-1774392233677-pfhzbe.jpg"
+        "imageUrl": ""
       },
       {
         "caption": "Kajian Rutin Ahad Pagi",
-        "imageUrl": "/media/hasil-aoc-fungsi-exploitation-2025-1774392256839-u9eo8w.jpg"
+        "imageUrl": ""
       },
       {
         "caption": "Kegiatan Anak",
-        "imageUrl": "/media/newplot-1774392267848-z3edo1.png"
+        "imageUrl": ""
       },
       {
         "caption": "Halaqah Ilmiah",
-        "imageUrl": "/media/well-c-logo-1774392276768-f3n2b5.png"
+        "imageUrl": ""
       },
       {
         "caption": "Live Streaming",
-        "imageUrl": "/media/pt_chart_overtime_lhd-17_mrsl-1774392301787-aixxoh.png"
-      },
-      {
-        "caption": "Pesantren Kilat",
-        "imageUrl": "/media/plot_dd-1774392910232-verxaa.png"
+        "imageUrl": ""
       }
     ]
   },
