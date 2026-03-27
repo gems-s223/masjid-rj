@@ -30,6 +30,16 @@ function sanitizeContent(content) {
     }));
   }
 
+  if (Array.isArray(content.schedules)) {
+    normalized.schedules = content.schedules.map((item) => ({
+      day: sanitizeString(item && item.day),
+      month: sanitizeString(item && item.month),
+      title: sanitizeString(item && item.title),
+      detail: sanitizeString(item && item.detail),
+      time: sanitizeString(item && item.time)
+    }));
+  }
+
   return normalized;
 }
 

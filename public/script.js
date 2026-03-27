@@ -1,4 +1,4 @@
-﻿  const CONTENT_STORAGE_KEY = 'rj_site_content_v1';
+  const CONTENT_STORAGE_KEY = 'rj_site_content_v1';
   const LIVE_STORAGE_KEY = 'rj_live_status';
 
   const DEFAULT_VIDEOS = [
@@ -132,6 +132,49 @@
     }).join('');
   }
 
+  function renderSchedules(content) {
+    const grid = document.getElementById('scheduleGrid');
+    if (!grid) return;
+
+    let schedules = content && Array.isArray(content.schedules) ? content.schedules : [];
+    
+    if (schedules.length === 0) {
+      schedules = [
+        { day: '23', month: 'Mar', title: 'Kajian Ahad Pagi', detail: 'Kitab Al-Mulakhos Fiqh<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah', time: '10:00 WIB - Menjelang Dzuhur' },
+        { day: '26', month: 'Mar', title: 'Kajian Malam Rabu', detail: 'Kitab Shahih Fiqih Sunnah<br>Bersama: Ust. Abdullah Hakim hafizhahullah', time: "Ba'da Isya' - 21:00 WIB" },
+        { day: '30', month: 'Mar', title: 'Kajian Ahad Pagi', detail: 'Kitab Al-Mulakhos Fiqh - Lanjutan<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah', time: '10:00 WIB - Menjelang Dzuhur' },
+        { day: '05', month: 'Apr', title: 'Tahsin Al-Quran', detail: 'Pembelajaran Tajwid &amp; Makhraj Huruf<br>Terbuka untuk umum, ikhwan &amp; akhwat', time: "Ba'da Ashar - 16:30 WIB" }
+      ];
+    }
+
+    const delays = [0, 0.1, 0.05, 0.15];
+    grid.innerHTML = schedules.map((item, index) => {
+      const day = escapeHtml(item.day || '');
+      const month = escapeHtml(item.month || '');
+      const title = escapeHtml(item.title || '');
+      const detail = item.detail || '';
+      const time = escapeHtml(item.time || '');
+      const delay = delays[index % delays.length];
+
+      return `
+      <div class="sched-card reveal" style="transition-delay:${delay}s">
+        <div class="sched-date">
+          <span class="sched-day">${day}</span>
+          <span class="sched-month">${month}</span>
+        </div>
+        <div class="sched-div"></div>
+        <div>
+          <h3 class="sched-title">${title}</h3>
+          <p class="sched-detail">${detail}</p>
+          <span class="sched-time">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ${time}
+          </span>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
   function applyContent(content) {
     Object.entries(content || {}).forEach(([key, value]) => {
       if (typeof value !== 'string') return;
@@ -160,6 +203,7 @@
 
     renderVideos(content || {});
     renderGallery(content || {});
+    renderSchedules(content);
   }
 
   function applyLiveBadge(isLive) {

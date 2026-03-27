@@ -4,6 +4,37 @@ const API_CONTENT_URL = '/api/content';
 const API_UPLOAD_URL = '/api/upload-image';
 const API_ADMIN_LOGOUT_URL = '/api/admin/logout';
 
+const DEFAULT_SCHEDULES = [
+  {
+    day: '23',
+    month: 'Mar',
+    title: 'Kajian Ahad Pagi',
+    detail: 'Kitab Al-Mulakhos Fiqh<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah',
+    time: '10:00 WIB - Menjelang Dzuhur'
+  },
+  {
+    day: '26',
+    month: 'Mar',
+    title: 'Kajian Malam Rabu',
+    detail: 'Kitab Shahih Fiqih Sunnah<br>Bersama: Ust. Abdullah Hakim hafizhahullah',
+    time: "Ba'da Isya' - 21:00 WIB"
+  },
+  {
+    day: '30',
+    month: 'Mar',
+    title: 'Kajian Ahad Pagi',
+    detail: 'Kitab Al-Mulakhos Fiqh - Lanjutan<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah',
+    time: '10:00 WIB - Menjelang Dzuhur'
+  },
+  {
+    day: '05',
+    month: 'Apr',
+    title: 'Tahsin Al-Quran',
+    detail: 'Pembelajaran Tajwid &amp; Makhraj Huruf<br>Terbuka untuk umum, ikhwan &amp; akhwat',
+    time: "Ba'da Ashar - 16:30 WIB"
+  }
+];
+
 const DEFAULT_VIDEOS = [
   {
     url: 'https://www.youtube.com/watch?v=Q_9Nt_tNuaY',
@@ -56,6 +87,7 @@ const defaultContent = {
   streamingDesc: 'Kajian-kajian di Masjid Raudhatul Jannah dapat Anda saksikan secara langsung maupun replay melalui channel YouTube dan Facebook kami. Ilmu Islam tidak mengenal jarak maupun waktu.',
   videosHeading: 'Kajian di YouTube',
   videosChannelUrl: 'https://www.youtube.com/@RaudhatulJannahOfficial',
+  schedulesHeading: 'Jadwal Kajian Mendatang',
   galleryHeading: 'Momen &amp; Kegiatan Masjid',
   contactSectionLabel: 'Hubungi Kami',
   contactSectionTitle: 'Temukan Kami<br>di Sini',
@@ -88,7 +120,7 @@ const defaultContent = {
   footerBrandName: 'Masjid Raudhatul Jannah',
   footerBrandLocation: 'Karanganyar - Kebumen',
   footerAyat: '"Dan sesungguhnya masjid-masjid itu adalah untuk Allah, maka janganlah kamu menyembah seseorang pun di dalamnya beserta Allah." <br>- QS. Al-Jin: 18',
-  footerCopy: '(c) 2024 Masjid Raudhatul Jannah - Karanganyar, Kebumen. Hak cipta dilindungi.'
+  footerCopy: '(c) 2026 Masjid Raudhatul Jannah - Karanganyar, Kebumen. Hak cipta dilindungi.'
 };
 
 const scalarKeys = Object.keys(defaultContent);
@@ -108,7 +140,8 @@ const galleryItemTemplate = document.getElementById('galleryItemTemplate');
 
 const state = {
   videos: [],
-  galleryItems: []
+  galleryItems: [],
+  schedules: []
 };
 
 function showStatus(message) {
@@ -121,6 +154,10 @@ function cloneDefaultVideos() {
 
 function cloneDefaultGalleryItems() {
   return DEFAULT_GALLERY_ITEMS.map((item) => ({ ...item }));
+}
+
+function cloneDefaultSchedules() {
+  return DEFAULT_SCHEDULES.map((item) => ({ ...item }));
 }
 
 function readSavedContent() {
@@ -171,6 +208,18 @@ function normalizeContent(raw) {
       caption: typeof safe[`galleryCap${index + 1}`] === 'string' ? safe[`galleryCap${index + 1}`] : item.caption,
       imageUrl: typeof safe[`galleryImage${index + 1}`] === 'string' ? safe[`galleryImage${index + 1}`] : item.imageUrl
     }));
+  }
+
+  if (Array.isArray(safe.schedules) && safe.schedules.length > 0) {
+    normalized.schedules = safe.schedules.map((item) => ({
+      day: typeof item?.day === 'string' ? item.day : '',
+      month: typeof item?.month === 'string' ? item.month : '',
+      title: typeof item?.title === 'string' ? item.title : '',
+      detail: typeof item?.detail === 'string' ? item.detail : '',
+      time: typeof item?.time === 'string' ? item.time : ''
+    }));
+  } else {
+    normalized.schedules = cloneDefaultSchedules();
   }
 
   return normalized;
@@ -428,6 +477,60 @@ function renderGalleryRepeater() {
   });
 }
 
+function renderSchedulesRepeater() {
+  const container = document.getElementById('schedulesRepeater');
+  if (!container) return;
+  container.innerHTML = '';
+
+  state.schedules.forEach((item, index) => {
+    const node = document.getElementById('scheduleItemTemplate').content.firstElementChild.cloneNode(true);
+    node.querySelector('[data-role="index"]').textContent = String(index + 1);
+
+    const dayInput = node.querySelector('[data-field="day"]');
+    const monthInput = node.querySelector('[data-field="month"]');
+    const titleInput = node.querySelector('[data-field="title"]');
+    const detailInput = node.querySelector('[data-field="detail"]');
+    const timeInput = node.querySelector('[data-field="time"]');
+    const removeBtn = node.querySelector('[data-action="remove-schedule"]');
+    const moveUpBtn = node.querySelector('[data-action="move-schedule-up"]');
+    const moveDownBtn = node.querySelector('[data-action="move-schedule-down"]');
+
+    dayInput.value = item.day;
+    monthInput.value = item.month;
+    titleInput.value = item.title;
+    detailInput.value = item.detail;
+    timeInput.value = item.time;
+
+    moveUpBtn.disabled = index === 0;
+    moveDownBtn.disabled = index === state.schedules.length - 1;
+
+    dayInput.addEventListener('input', () => { state.schedules[index].day = dayInput.value; });
+    monthInput.addEventListener('input', () => { state.schedules[index].month = monthInput.value; });
+    titleInput.addEventListener('input', () => { state.schedules[index].title = titleInput.value; });
+    detailInput.addEventListener('input', () => { state.schedules[index].detail = detailInput.value; });
+    timeInput.addEventListener('input', () => { state.schedules[index].time = timeInput.value; });
+
+    removeBtn.addEventListener('click', () => {
+      state.schedules.splice(index, 1);
+      renderSchedulesRepeater();
+    });
+
+    moveUpBtn.addEventListener('click', () => {
+      if (index === 0) return;
+      [state.schedules[index - 1], state.schedules[index]] = [state.schedules[index], state.schedules[index - 1]];
+      renderSchedulesRepeater();
+    });
+
+    moveDownBtn.addEventListener('click', () => {
+      if (index === state.schedules.length - 1) return;
+      [state.schedules[index + 1], state.schedules[index]] = [state.schedules[index], state.schedules[index + 1]];
+      renderSchedulesRepeater();
+    });
+
+    container.appendChild(node);
+  });
+}
+
 function fillScalarInputs(values) {
   scalarKeys.forEach((key) => {
     const input = form.elements.namedItem(key);
@@ -451,7 +554,8 @@ function getRequestPayload() {
   return {
     ...collectScalarValues(),
     videos: state.videos,
-    galleryItems: state.galleryItems
+    galleryItems: state.galleryItems,
+    schedules: state.schedules
   };
 }
 
@@ -502,8 +606,10 @@ function applyContentToForm(content) {
   fillScalarInputs(normalized);
   state.videos = normalized.videos;
   state.galleryItems = normalized.galleryItems;
+  state.schedules = normalized.schedules;
   renderVideosRepeater();
   renderGalleryRepeater();
+  renderSchedulesRepeater();
 }
 
 saveBtn.addEventListener('click', async () => {
@@ -530,7 +636,8 @@ resetBtn.addEventListener('click', async () => {
   const resetContent = {
     ...defaultContent,
     videos: cloneDefaultVideos(),
-    galleryItems: cloneDefaultGalleryItems()
+    galleryItems: cloneDefaultGalleryItems(),
+    schedules: cloneDefaultSchedules()
   };
 
   try {
@@ -566,6 +673,20 @@ addGalleryBtn.addEventListener('click', () => {
   });
   renderGalleryRepeater();
 });
+
+const addScheduleBtn = document.getElementById('addScheduleBtn');
+if (addScheduleBtn) {
+  addScheduleBtn.addEventListener('click', () => {
+    state.schedules.push({
+      day: '',
+      month: '',
+      title: '',
+      detail: '',
+      time: ''
+    });
+    renderSchedulesRepeater();
+  });
+}
 
 logoutBtn.addEventListener('click', async () => {
   try {

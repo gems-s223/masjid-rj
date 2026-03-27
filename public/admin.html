@@ -124,6 +124,22 @@
 
       <section class="panel panel-section">
         <div class="panel-head">
+          <h2>Schedule Section</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            Judul Section Jadwal
+            <input name="schedulesHeading" type="text" value="Jadwal Kajian Mendatang">
+          </label>
+        </div>
+        <div class="repeater-actions">
+          <button id="addScheduleBtn" class="btn ghost" type="button">Tambah Jadwal</button>
+        </div>
+        <div id="schedulesRepeater" class="repeater-list"></div>
+      </section>
+
+      <section class="panel panel-section">
+        <div class="panel-head">
           <h2>Gallery Section</h2>
         </div>
         <div class="form-grid">
@@ -350,6 +366,41 @@
         <span class="upload-pct" data-role="upload-pct">0%</span>
       </div>
       <img class="preview-thumb" data-role="preview" alt="Preview gambar galeri">
+    </article>
+  </template>
+
+  <template id="scheduleItemTemplate">
+    <article class="repeater-card" data-role="schedule-item">
+      <div class="repeater-card-head">
+        <h3>Jadwal <span data-role="index"></span></h3>
+        <div class="repeater-card-actions">
+          <button class="btn sm" type="button" data-action="move-schedule-up" title="Geser ke atas">&#9650;</button>
+          <button class="btn sm" type="button" data-action="move-schedule-down" title="Geser ke bawah">&#9660;</button>
+          <button class="btn danger" type="button" data-action="remove-schedule">Hapus</button>
+        </div>
+      </div>
+      <div class="form-grid">
+        <label>
+          Tanggal (hari)
+          <input type="text" data-field="day" placeholder="23">
+        </label>
+        <label>
+          Bulan
+          <input type="text" data-field="month" placeholder="Mar">
+        </label>
+        <label>
+          Judul Kajian
+          <input type="text" data-field="title" placeholder="Kajian Ahad Pagi">
+        </label>
+        <label>
+          Detail (dapat HTML)
+          <textarea data-field="detail" rows="2" placeholder="Kitab Al-Mulakhos Fiqh<br>Bersama: Ust. Muhammad Fakhruddin"></textarea>
+        </label>
+        <label>
+          Waktu
+          <input type="text" data-field="time" placeholder="10:00 WIB - Menjelang Dzuhur">
+        </label>
+      </div>
     </article>
   </template>
 
