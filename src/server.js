@@ -2,11 +2,13 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const supabase = require('../lib/supabase');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 const DATA_DIR = path.join(ROOT_DIR, 'data');
 const MEDIA_DIR = path.join(ROOT_DIR, 'media');
+const SUPABASE_MEDIA_BUCKET = 'media';
 const HELP_FILE = path.join(PUBLIC_DIR, 'HELP.md');
 const DATA_FILE = path.join(DATA_DIR, 'content.json');
 const PORT = Number.parseInt(process.env.PORT || '3000', 10);
@@ -500,7 +502,7 @@ function handleApi(req, res, pathname) {
     }
 
     readJsonBody(req, 10 * 1024 * 1024)
-      .then((incoming) => {
+      .then(async (incoming) => {
         const mimeType = sanitizeString(incoming.mimeType);
         const base64Data = sanitizeString(incoming.base64Data);
         const originalFileName = sanitizeString(incoming.fileName);
@@ -517,10 +519,18 @@ function handleApi(req, res, pathname) {
         const baseName = safeFileSlug(path.parse(originalFileName).name);
         const uniquePart = `${Date.now()}-${crypto.randomBytes(4).toString('hex')}`;
         const fileName = `${baseName}-${uniquePart}${extension}`;
-        const filePath = path.join(MEDIA_DIR, fileName);
+        const buffer = Buffer.from(base64Data, 'base64');
 
-        fs.writeFileSync(filePath, Buffer.from(base64Data, 'base64'));
-        sendJson(res, 200, { ok: true, url: `/media/${fileName}` });
+        const { error } = await supabase.storage
+          .from(SUPABASE_MEDIA_BUCKET)
+          .upload(fileName, buffer, { contentType: mimeType, upsert: false });
+
+        if (error) {
+          throw new Error(error.message);
+        }
+
+        const { data } = supabase.storage.from(SUPABASE_MEDIA_BUCKET).getPublicUrl(fileName);
+        sendJson(res, 200, { ok: true, url: data.publicUrl });
       })
       .catch((error) => {
         sendJson(res, 400, { error: error.message });
