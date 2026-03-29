@@ -23,7 +23,7 @@ function sanitizeContent(content) {
     schedule: ['label', 'heading'],
     gallery: ['label', 'heading'],
     contact: ['sectionLabel', 'sectionTitle', 'locationLabel', 'address', 'mapsUrl', 'mapEmbedUrl', 'whatsappLabel', 'whatsappUrl', 'phoneHref', 'phoneText', 'instagramLabel', 'instagramUrl', 'instagramText', 'facebookLabel', 'facebookUrl', 'facebookText', 'youtubeLabel', 'youtubeUrl', 'youtubeText'],
-    donation: ['label', 'title', 'desc', 'bankName', 'bankLabel', 'bankNumber', 'bankOwner', 'whatsappUrl', 'whatsappText'],
+    donation: ['label', 'title', 'desc', 'bankName', 'bankLabel', 'bankNumber', 'bankOwner', 'whatsappUrl', 'whatsappText', 'qrisUrl'],
     footer: ['brandName', 'brandLocation', 'ayat', 'copy']
   };
 

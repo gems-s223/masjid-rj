@@ -206,7 +206,8 @@ const defaultContent = {
     bankNumber: 'No. Rek: XXXX-XXXX-XXXX',
     bankOwner: 'a.n. Masjid Raudhatul Jannah',
     whatsappUrl: 'https://wa.me/6285865206010',
-    whatsappText: 'Konfirmasi via WhatsApp'
+    whatsappText: 'Konfirmasi via WhatsApp',
+    qrisUrl: ''
   },
   footer: {
     brandName: 'Masjid Raudhatul Jannah',
@@ -226,7 +227,7 @@ const scalarKeys = {
   schedule: ['label', 'heading'],
   gallery: ['label', 'heading'],
   contact: ['sectionLabel', 'sectionTitle', 'locationLabel', 'address', 'mapsUrl', 'mapEmbedUrl', 'whatsappLabel', 'whatsappUrl', 'phoneHref', 'phoneText', 'instagramLabel', 'instagramUrl', 'instagramText', 'facebookLabel', 'facebookUrl', 'facebookText', 'youtubeLabel', 'youtubeUrl', 'youtubeText'],
-  donation: ['label', 'title', 'desc', 'bankName', 'bankLabel', 'bankNumber', 'bankOwner', 'whatsappUrl', 'whatsappText'],
+  donation: ['label', 'title', 'desc', 'bankName', 'bankLabel', 'bankNumber', 'bankOwner', 'whatsappUrl', 'whatsappText', 'qrisUrl'],
   footer: ['brandName', 'brandLocation', 'ayat', 'copy']
 };
 
@@ -908,6 +909,7 @@ function applyContentToForm(content) {
   renderSchedulesRepeater();
   renderProgramsRepeater();
   renderFasilitasRepeater();
+  updateQrisPreview(normalized.donation?.qrisUrl);
 }
 
 saveBtn.addEventListener('click', async () => {
@@ -1014,6 +1016,75 @@ logoutBtn.addEventListener('click', async () => {
 
   window.location.href = '/login.html';
 });
+
+const qrisDropzone = document.getElementById('qrisDropzone');
+const qrisFileInput = document.getElementById('qrisFileInput');
+const qrisProgress = document.getElementById('qrisProgress');
+const qrisBar = document.getElementById('qrisBar');
+const qrisPct = document.getElementById('qrisPct');
+const qrisPreview = document.getElementById('qrisPreview');
+const qrisUrlInput = document.querySelector('input[name="donation_qrisUrl"]');
+
+function updateQrisPreview(url) {
+  if (url && url.trim()) {
+    qrisPreview.src = url;
+    qrisPreview.style.display = 'block';
+  } else {
+    qrisPreview.style.display = 'none';
+  }
+}
+
+async function runQrisUpload(file) {
+  if (!file) return;
+  qrisDropzone.classList.add('dragging');
+  qrisProgress.hidden = false;
+  qrisBar.style.width = '0%';
+  qrisPct.textContent = '0%';
+  showStatus('Mengupload gambar QRIS...');
+
+  try {
+    const imageUrl = await uploadImage(file, (pct) => {
+      if (pct >= 0) {
+        qrisBar.style.width = pct + '%';
+        qrisPct.textContent = pct + '%';
+      }
+    });
+    qrisBar.style.width = '100%';
+    qrisPct.textContent = '100%';
+    qrisUrlInput.value = imageUrl;
+    updateQrisPreview(imageUrl);
+    showStatus('Upload QRIS selesai.');
+  } catch (error) {
+    console.error(error);
+    showStatus(`Upload gagal: ${error.message}`);
+  } finally {
+    qrisDropzone.classList.remove('dragging');
+    setTimeout(() => { qrisProgress.hidden = true; }, 1500);
+  }
+}
+
+if (qrisDropzone) {
+  qrisDropzone.addEventListener('click', () => qrisFileInput.click());
+  qrisDropzone.addEventListener('dragover', (e) => { e.preventDefault(); qrisDropzone.classList.add('dragging'); });
+  qrisDropzone.addEventListener('dragleave', () => qrisDropzone.classList.remove('dragging'));
+  qrisDropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer?.files?.[0];
+    void runQrisUpload(file);
+  });
+}
+
+if (qrisFileInput) {
+  qrisFileInput.addEventListener('change', () => {
+    const file = qrisFileInput.files?.[0];
+    void runQrisUpload(file);
+    qrisFileInput.value = '';
+  });
+}
+
+if (qrisUrlInput) {
+  qrisUrlInput.addEventListener('input', () => updateQrisPreview(qrisUrlInput.value));
+}
 
 async function initializeForm() {
   try {

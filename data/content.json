@@ -12,10 +12,151 @@
       "p2": "Kami berkomitmen untuk menghadirkan kajian ilmu yang bersumber dari Al-Quran dan As-Sunnah sesuai pemahaman Salafus Shalih, serta melayani kebutuhan ibadah dan pendidikan masyarakat sekitar.",
       "p3": "Dengan program kajian rutin, live streaming, dan kegiatan untuk seluruh kalangan - anak, remaja, hingga dewasa - Raudhatul Jannah hadir sebagai rumah bagi setiap muslim yang ingin menuntut ilmu dan mendekatkan diri kepada Allah.",
       "stats": [
-        { "number": "5+", "label": "Tahun Berdiri" },
-        { "number": "20+", "label": "Program/Tahun" },
-        { "number": "2K+", "label": "Jama'ah" }
+        {
+          "number": "5+",
+          "label": "Tahun Berdiri"
+        },
+        {
+          "number": "20+",
+          "label": "Program/Tahun"
+        },
+        {
+          "number": "2K+",
+          "label": "Jama'ah"
+        }
       ]
+    },
+    "streaming": {
+      "label": "Live Streaming",
+      "heading": "Saksikan Kajian<br>Secara Langsung",
+      "desc": "Kajian-kajian di Masjid Raudhatul Jannah dapat Anda saksikan secara langsung maupun replay melalui channel YouTube dan Facebook kami. Ilmu Islam tidak mengenal jarak maupun waktu."
+    },
+    "videos": {
+      "heading": "Video Kegiatan & Kajian di YouTube",
+      "channelUrl": "https://www.youtube.com/@RaudhatulJannahOfficial",
+      "items": [
+        {
+          "url": "https://www.youtube.com/watch?v=Q_9Nt_tNuaY",
+          "image": "https://img.youtube.com/vi/Q_9Nt_tNuaY/maxresdefault.jpg",
+          "title": "Video Kajian Terbaru",
+          "meta": "Raudhatul Jannah Official"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=QURlHtbi5PY",
+          "image": "https://img.youtube.com/vi/QURlHtbi5PY/maxresdefault.jpg",
+          "title": "Video Kajian Terbaru",
+          "meta": "Raudhatul Jannah Official"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=NPfj_f4r2Ck",
+          "image": "https://img.youtube.com/vi/NPfj_f4r2Ck/maxresdefault.jpg",
+          "title": "Video Kajian Terbaru",
+          "meta": "Raudhatul Jannah Official"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=44X5RHUQppI",
+          "image": "https://img.youtube.com/vi/44X5RHUQppI/maxresdefault.jpg",
+          "title": "Video Kajian Terbaru",
+          "meta": "Raudhatul Jannah Official"
+        }
+      ]
+    },
+    "schedule": {
+      "heading": "Jadwal Kajian Mendatang",
+      "items": [
+        {
+          "day": "24",
+          "month": "Mar",
+          "title": "Kajian Ahad Pagi",
+          "detail": "Kitab Al-Mulakhos Fiqh<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah",
+          "time": "10:00 WIB - Menjelang Dzuhur"
+        },
+        {
+          "day": "27",
+          "month": "Mar",
+          "title": "Kajian Malam Kamis",
+          "detail": "Kitab Shahih Fiqih Sunnah<br>Bersama: Ust. Abdullah Hakim hafizhahullah",
+          "time": "Ba'da Isya' - 21:00 WIB"
+        },
+        {
+          "day": "30",
+          "month": "Mar",
+          "title": "Kajian Ahad Pagi",
+          "detail": "Kitab Al-Mulakhos Fiqh - Lanjutan<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah",
+          "time": "10:00 WIB - Menjelang Dzuhur"
+        },
+        {
+          "day": "05",
+          "month": "Apr",
+          "title": "Tahsin Al-Quran",
+          "detail": "Pembelajaran Tajwid &amp; Makhraj Huruf<br>Terbuka untuk umum, ikhwan &amp; akhwat",
+          "time": "Ba'da Ashar - 16:30 WIB"
+        }
+      ]
+    },
+    "gallery": {
+      "heading": "Momen &amp; Kegiatan Masjid",
+      "items": [
+        {
+          "caption": "Masjid",
+          "imageUrl": "/media/masjid-1774573282898-541a14b3.jpg"
+        },
+        {
+          "caption": "Kajian Rutin",
+          "imageUrl": "/media/kajian-1774573307958-a87ce680.jpg"
+        },
+        {
+          "caption": "Loker",
+          "imageUrl": "/media/locker-1774573325246-d5e951a2.jpg"
+        },
+        {
+          "caption": "Area Parkir",
+          "imageUrl": "/media/parking-area-1774573336824-51439173.jpg"
+        },
+        {
+          "caption": "RJ Mart",
+          "imageUrl": "/media/rjmart-1774573343450-4d80aa21.jpg"
+        }
+      ]
+    },
+    "contact": {
+      "sectionLabel": "Hubungi Kami",
+      "sectionTitle": "Temukan Kami<br>di Sini",
+      "locationLabel": "Lokasi",
+      "address": "Komplek Minimarket RJ Mart<br>JL. Pabrik No. 1, Karanganyar, Kebumen",
+      "mapsUrl": "https://maps.google.com/?q=Masjid+Raudhatul+Jannah+Karanganyar+Kebumen",
+      "mapEmbedUrl": "https://maps.google.com/maps?q=Masjid+Raudhatul+Jannah+Karanganyar+Kebumen&output=embed",
+      "whatsappLabel": "Telepon / WhatsApp",
+      "whatsappUrl": "https://wa.me/6285865206010",
+      "phoneHref": "tel:085865206010",
+      "phoneText": "0858-6520-6010",
+      "instagramLabel": "Instagram",
+      "instagramUrl": "https://www.instagram.com/masjid.rjannah/",
+      "instagramText": "@masjid.rjannah",
+      "facebookLabel": "Facebook",
+      "facebookUrl": "https://www.facebook.com/masjid.mrj",
+      "facebookText": "Masjid Raudhatul Jannah",
+      "youtubeLabel": "YouTube",
+      "youtubeUrl": "https://www.youtube.com/@masjid.rjannah/",
+      "youtubeText": "Raudhatul Jannah Official"
+    },
+    "donation": {
+      "label": "Donasi &amp; Infaq",
+      "title": "Dukung Kemakmuran<br>Masjid Raudhatul Jannah",
+      "desc": "Sedekah Anda adalah investasi akhirat yang tak ternilai. Bantu kami terus menjalankan program dakwah, pendidikan, dan pelayanan umat di Karanganyar, Kebumen.",
+      "bankName": "Nama Bank",
+      "bankLabel": "Nomor Rekening",
+      "bankNumber": "No. Rek: XXXX-XXXX-XXXX",
+      "bankOwner": "a.n. Masjid Raudhatul Jannah",
+      "whatsappUrl": "https://wa.me/6285865206010",
+      "whatsappText": "Konfirmasi via WhatsApp",
+      "qrisUrl": "https://qris-dinamis.web.app/images/qris_image.png"
+    },
+    "footer": {
+      "brandName": "Masjid Raudhatul Jannah",
+      "brandLocation": "Karanganyar - Kebumen",
+      "ayat": "\"Dan sesungguhnya masjid-masjid itu adalah untuk Allah, maka janganlah kamu menyembah seseorang pun di dalamnya beserta Allah.\" <br>- QS. Al-Jin: 18",
+      "copy": "(c) 2026 Masjid Raudhatul Jannah - Karanganyar, Kebumen. Hak cipta dilindungi."
     },
     "program": {
       "label": "Program Kami",
@@ -58,147 +199,7 @@
           "tag": "LAZIS Raudhatul Jannah"
         }
       ]
-    },
-    "fasilitas": {
-      "label": "Fasilitas",
-      "heading": "Fasilitas &amp; Layanan",
-      "items": [
-        {
-          "icon": "toilet",
-          "title": "Toilet Gratis",
-          "desc": "Fasilitas toilet bersih tersedia gratis untuk seluruh jamaah dan pengunjung masjid, terjaga kebersihannya setiap saat."
-        },
-        {
-          "icon": "parkir",
-          "title": "Parkir Luas & Gratis",
-          "desc": "Area parkir yang luas, nyaman, dan gratis untuk kendaraan roda dua maupun roda empat seluruh jamaah dan pengunjung."
-        },
-        {
-          "icon": "toko",
-          "title": "Toko RJ Mart",
-          "desc": "Minimarket RJ Mart berlokasi di kompleks masjid, memudahkan jamaah memenuhi kebutuhan sehari-hari sebelum atau sesudah ibadah."
-        }
-      ]
-    },
-    "streaming": {
-      "label": "Live Streaming",
-      "heading": "Saksikan Kajian<br>Secara Langsung",
-      "desc": "Kajian-kajian di Masjid Raudhatul Jannah dapat Anda saksikan secara langsung maupun replay melalui channel YouTube dan Facebook kami. Ilmu Islam tidak mengenal jarak maupun waktu."
-    },
-    "videos": {
-      "label": "Video Terbaru",
-      "heading": "Video Kegiatan & Kajian di YouTube",
-      "channelUrl": "https://www.youtube.com/@RaudhatulJannahOfficial",
-      "items": [
-        {
-          "url": "https://www.youtube.com/watch?v=Q_9Nt_tNuaY",
-          "image": "https://img.youtube.com/vi/Q_9Nt_tNuaY/maxresdefault.jpg",
-          "title": "Video Kajian Terbaru",
-          "meta": "Raudhatul Jannah Official"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=QURlHtbi5PY",
-          "image": "https://img.youtube.com/vi/QURlHtbi5PY/maxresdefault.jpg",
-          "title": "Video Kajian Terbaru",
-          "meta": "Raudhatul Jannah Official"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=NPfj_f4r2Ck",
-          "image": "https://img.youtube.com/vi/NPfj_f4r2Ck/maxresdefault.jpg",
-          "title": "Video Kajian Terbaru",
-          "meta": "Raudhatul Jannah Official"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=44X5RHUQppI",
-          "image": "https://img.youtube.com/vi/44X5RHUQppI/maxresdefault.jpg",
-          "title": "Video Kajian Terbaru",
-          "meta": "Raudhatul Jannah Official"
-        }
-      ]
-    },
-    "schedule": {
-      "label": "Agenda",
-      "heading": "Jadwal Kajian Mendatang",
-      "items": [
-        {
-          "day": "24",
-          "month": "Mar",
-          "title": "Kajian Ahad Pagi",
-          "detail": "Kitab Al-Mulakhos Fiqh<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah",
-          "time": "10:00 WIB - Menjelang Dzuhur"
-        },
-        {
-          "day": "27",
-          "month": "Mar",
-          "title": "Kajian Malam Kamis",
-          "detail": "Kitab Shahih Fiqih Sunnah<br>Bersama: Ust. Abdullah Hakim hafizhahullah",
-          "time": "Ba'da Isya' - 21:00 WIB"
-        },
-        {
-          "day": "30",
-          "month": "Mar",
-          "title": "Kajian Ahad Pagi",
-          "detail": "Kitab Al-Mulakhos Fiqh - Lanjutan<br>Bersama: Ust. Muhammad Fakhruddin hafizhahullah",
-          "time": "10:00 WIB - Menjelang Dzuhur"
-        },
-        {
-          "day": "05",
-          "month": "Apr",
-          "title": "Tahsin Al-Quran",
-          "detail": "Pembelajaran Tajwid &amp; Makhraj Huruf<br>Terbuka untuk umum, ikhwan &amp; akhwat",
-          "time": "Ba'da Ashar - 16:30 WIB"
-        }
-      ]
-    },
-    "gallery": {
-      "label": "Galeri Foto",
-      "heading": "Momen &amp; Kegiatan Masjid",
-      "items": [
-        { "caption": "Masjid", "imageUrl": "/media/masjid-1774573282898-541a14b3.jpg" },
-        { "caption": "Kajian Rutin", "imageUrl": "/media/kajian-1774573307958-a87ce680.jpg" },
-        { "caption": "Loker", "imageUrl": "/media/locker-1774573325246-d5e951a2.jpg" },
-        { "caption": "Area Parkir", "imageUrl": "/media/parking-area-1774573336824-51439173.jpg" },
-        { "caption": "RJ Mart", "imageUrl": "/media/rjmart-1774573343450-4d80aa21.jpg" }
-      ]
-    },
-    "contact": {
-      "sectionLabel": "Hubungi Kami",
-      "sectionTitle": "Temukan Kami<br>di Sini",
-      "locationLabel": "Lokasi",
-      "address": "Komplek Minimarket RJ Mart<br>JL. Pabrik No. 1, Karanganyar, Kebumen",
-      "mapsUrl": "https://maps.google.com/?q=Masjid+Raudhatul+Jannah+Karanganyar+Kebumen",
-      "mapEmbedUrl": "https://maps.google.com/maps?q=Masjid+Raudhatul+Jannah+Karanganyar+Kebumen&output=embed",
-      "whatsappLabel": "Telepon / WhatsApp",
-      "whatsappUrl": "https://wa.me/6285865206010",
-      "phoneHref": "tel:085865206010",
-      "phoneText": "0858-6520-6010",
-      "instagramLabel": "Instagram",
-      "instagramUrl": "https://www.instagram.com/masjid.rjannah/",
-      "instagramText": "@masjid.rjannah",
-      "facebookLabel": "Facebook",
-      "facebookUrl": "https://www.facebook.com/masjid.mrj",
-      "facebookText": "Masjid Raudhatul Jannah",
-      "youtubeLabel": "YouTube",
-      "youtubeUrl": "https://www.youtube.com/@masjid.rjannah/",
-      "youtubeText": "Raudhatul Jannah Official"
-    },
-    "donation": {
-      "label": "Donasi &amp; Infaq",
-      "title": "Dukung Kemakmuran<br>Masjid Raudhatul Jannah",
-      "desc": "Sedekah Anda adalah investasi akhirat yang tak ternilai. Bantu kami terus menjalankan program dakwah, pendidikan, dan pelayanan umat di Karanganyar, Kebumen.",
-      "bankName": "Nama Bank",
-      "bankLabel": "Nomor Rekening",
-      "bankNumber": "No. Rek: XXXX-XXXX-XXXX",
-      "bankOwner": "a.n. Masjid Raudhatul Jannah",
-      "whatsappUrl": "https://wa.me/6285865206010",
-      "whatsappText": "Konfirmasi via WhatsApp"
-    },
-    "footer": {
-      "brandName": "Masjid Raudhatul Jannah",
-      "brandLocation": "Karanganyar - Kebumen",
-      "ayat": "\"Dan sesungguhnya masjid-masjid itu adalah untuk Allah, maka janganlah kamu menyembah seseorang pun di dalamnya beserta Allah.\" <br>- QS. Al-Jin: 18",
-      "copy": "(c) 2026 Masjid Raudhatul Jannah - Karanganyar, Kebumen. Hak cipta dilindungi."
     }
   },
-  "isLive": false
+  "isLive": true
 }

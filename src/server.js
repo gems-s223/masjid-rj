@@ -1,3 +1,4 @@
+require('dotenv').config();
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -479,9 +480,9 @@ function handleApi(req, res, pathname) {
           });
           sendJson(res, 200, { ok: true });
         })
-        .catch((error) => {
-          sendJson(res, 400, { error: error.message });
-        });
+      .catch((error) => {
+        sendJson(res, 500, { error: error.message });
+      });
       return;
     }
 
@@ -521,12 +522,18 @@ function handleApi(req, res, pathname) {
         const fileName = `${baseName}-${uniquePart}${extension}`;
         const buffer = Buffer.from(base64Data, 'base64');
 
-        const { error } = await supabase.storage
+        const { data: bucketData, error: bucketError } = await supabase.storage.getBucket(SUPABASE_MEDIA_BUCKET);
+        
+        if (bucketError || !bucketData) {
+          throw new Error(`Storage bucket '${SUPABASE_MEDIA_BUCKET}' not found. Create it in Supabase Dashboard > Storage.`);
+        }
+
+        const { error: uploadError } = await supabase.storage
           .from(SUPABASE_MEDIA_BUCKET)
           .upload(fileName, buffer, { contentType: mimeType, upsert: false });
 
-        if (error) {
-          throw new Error(error.message);
+        if (uploadError) {
+          throw new Error(`Upload failed: ${uploadError.message}`);
         }
 
         const { data } = supabase.storage.from(SUPABASE_MEDIA_BUCKET).getPublicUrl(fileName);

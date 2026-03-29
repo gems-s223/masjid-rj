@@ -801,10 +801,11 @@
       border-radius: 8px; padding: 2rem 2.5rem;
       text-align: left; min-width: 300px; margin-bottom: 2rem;
     }
+    .rekening * { color: #fff; }
     .rek-lbl { color: var(--gold); font-size: 0.67rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.5rem; }
-    .rek-bank { color: var(--cream); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; }
-    .rek-no { color: var(--cream); font-size: 1.1rem; letter-spacing: 0.1em; margin: 0.2rem 0; }
-    .rek-atas { color: rgba(250,232,212,0.55); font-size: 0.82rem; }
+    .rek-bank { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; }
+    .rek-no { font-size: 1.1rem; letter-spacing: 0.1em; margin: 0.2rem 0; }
+    .rek-atas { font-size: 0.82rem; opacity: 0.85; }
 
     /* ─── FOOTER ──────────────────────────────────────── */
     footer { background: var(--brown-deepest); padding: 4.5rem 2rem 2rem; position: relative; overflow: hidden; }

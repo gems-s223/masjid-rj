@@ -50,10 +50,6 @@
             Tagline Hero (boleh HTML)
             <textarea name="hero_tagline" rows="2">Rumah Ibadah <span>·</span> Pusat Ilmu <span>·</span> Cahaya Umat</textarea>
           </label>
-          <label class="live-toggle">
-            <input id="isLive" type="checkbox">
-            Tandai sedang LIVE
-          </label>
         </div>
       </section>
 
@@ -166,6 +162,10 @@
         <label>
           Deskripsi Streaming
           <textarea name="streaming_desc" rows="4">Kajian-kajian di Masjid Raudhatul Jannah dapat Anda saksikan secara langsung maupun replay melalui channel YouTube dan Facebook kami. Ilmu Islam tidak mengenal jarak maupun waktu.</textarea>
+        </label>
+        <label class="live-toggle">
+          <input id="isLive" type="checkbox">
+          Tandai sedang LIVE
         </label>
       </section>
 
@@ -346,6 +346,22 @@
             Teks Tombol Konfirmasi
             <input name="donation_whatsappText" type="text" value="Konfirmasi via WhatsApp">
           </label>
+          <label>
+            URL Gambar QRIS
+            <input name="donation_qrisUrl" type="text" placeholder="https://...">
+          </label>
+          <div class="qris-upload">
+            <label>Upload Gambar QRIS</label>
+            <div class="dropzone" id="qrisDropzone" tabindex="0">
+              Drag & drop gambar QRIS di sini atau klik untuk upload
+            </div>
+            <input type="file" id="qrisFileInput" accept="image/png,image/jpeg,image/webp" hidden>
+            <div class="upload-progress" id="qrisProgress" hidden>
+              <div class="upload-bar" id="qrisBar"></div>
+              <span class="upload-pct" id="qrisPct">0%</span>
+            </div>
+            <img class="preview-thumb" id="qrisPreview" alt="Preview QRIS">
+          </div>
         </div>
       </section>
 

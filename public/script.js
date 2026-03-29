@@ -337,6 +337,19 @@
     liveBadge.classList.toggle('is-live', Boolean(isLive));
   }
 
+  function applyDonationQris(qrisUrl) {
+    const qrisWrap = document.getElementById('qrisWrap');
+    const qrisImage = document.getElementById('qrisImage');
+    if (!qrisWrap || !qrisImage) return;
+
+    if (qrisUrl && qrisUrl.trim()) {
+      qrisImage.src = qrisUrl;
+      qrisWrap.style.display = 'block';
+    } else {
+      qrisWrap.style.display = 'none';
+    }
+  }
+
   async function loadRemoteContent() {
     try {
       const response = await fetch('/api/content', { cache: 'no-store' });
@@ -347,6 +360,7 @@
       const payload = await response.json();
       applyContent(payload.content || {});
       applyLiveBadge(payload.isLive);
+      applyDonationQris(payload.content?.donation?.qrisUrl);
 
       localStorage.setItem(CONTENT_STORAGE_KEY, JSON.stringify(payload.content || {}));
       localStorage.setItem(LIVE_STORAGE_KEY, String(Boolean(payload.isLive)));
@@ -374,6 +388,7 @@
 
       applyContent(saved);
       applyLiveBadge(localStorage.getItem(LIVE_STORAGE_KEY) === 'true');
+      applyDonationQris(saved?.donation?.qrisUrl);
     }
   }
 
